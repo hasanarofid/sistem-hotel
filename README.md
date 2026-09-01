@@ -1,98 +1,70 @@
-# Hasan Hotel — Luxury Resort & Direct Booking System
+# Hasan Hotel — Luxury Boutique Resort Redesign & Direct Booking System
 
-**Hasan Hotel** adalah platform aplikasi berbasis web untuk **Sistem Manajemen Hotel & Direct Booking Engine** yang dirancang dengan sudut pandang *Hospitality Revenue & Operations Analyst*. Sistem ini dibangun untuk memaksimalkan angka *Direct Booking* (bebas komisi pihak ketiga/OTA), mempercepat alur transaksi reservasi tamu, serta mengotomatisasi operasional resort/hotel menggunakan arsitektur modern berbasis **Laravel 11**, **Vue 3 (Inertia.js)**, **Tailwind CSS**, dan **MySQL**.
+**Hasan Hotel** adalah platform web hospitality & *Direct Booking System* yang dirancang khusus untuk meredesign dan meng-elevasi **Vije Boutique Resort** ([www.vijeboutiqueresort.com](https://www.vijeboutiqueresort.com)) menjadi antarmuka digital berkelas dunia mengusung standar **"Quiet Luxury Boutique Resort"** (Inspirasi dari **Aman Resorts** & **Kempinski Hotels**).
 
-- **Repository Git Target:** `git@github.com:hasanarofid/sistem-hotel.git`
+- **Target Repository:** `git@github.com:hasanarofid/sistem-hotel.git`
 - **Developer & Owner:** [@hasanarofid.site](https://hasanarofid.site) | WhatsApp: [Wa.me/628814959247](https://Wa.me/628814959247)
 
 ---
 
-## 🏛️ Filosofi Analis Hotel & Konsep Desain UI/UX
+## 💎 Prinsip Desain Utama: *"Less, But Better"*
 
-Sistem **Hasan Hotel** mengadopsi standar visual *5-star luxury boutique resort* (inspirasi dari **Aman Resorts & Kempinski Hotels**):
-- **Desain Modern & Responsif:** Tampilan adaptif sempurna di layar perangkat smartphone, tablet, dan desktop.
-- **Bebas Cliché Visual AI:** Menghindari elemen dekoratif berlebihan atau gradien berisik. Fokus pada keanggunan autentik, tipografi premium (*Cormorant Garamond / Plus Jakarta Sans*), *whitespace* seimbang, dan gambar resolusi tinggi.
-- **Zero-Friction Guest Journey:** Meminimalisir langkah pemesanan kamar agar tamu dapat menyelesaikan transaksi dalam hitungan detik.
-
----
-
-## 🚀 Fitur Utama Sistem
-
-### 1. Direct Booking Engine (Alur Pemesanan Tamu)
-- 🔍 **Filter Pencarian Real-time:** Check-in, Check-out, & Jumlah Tamu.
-- 🛏️ **Room & Villa Showcase:** Galeri foto interaktif, amenitas kamar, bed type, & kebijakan pembatalan.
-- 🏷️ **Dynamic Rate Plan:** Pilihan *Best Available Rate*, *With Breakfast*, atau paket diskon promosi.
-- 🍷 **Layanan Add-ons:** Spa Treatment, Airport Transfer, Candlelight Dinner, & Extra Bed.
-- 📱 **WhatsApp Instant E-Voucher:** Pengiriman tiket/voucher digital otomatis berformat PDF & QR Code ke WhatsApp tamu saat pembayaran berhasil.
-
-### 2. PMS Light & Control Panel Operasional (Admin Hotel)
-- 📅 **Interactive Reservation Calendar:** Visualisasi status kamar (*Booked*, *Checked-In*, *Checked-Out*, *Maintenance*).
-- 💰 **Dynamic Pricing & Allotment:** Kemudahan mengubah harga kamar berdasarkan musim (*Peak/High/Low Season*) dan mengunci kuota kamar.
-- 📝 **Manual Reservation Input:** Fitur entri cepat untuk reservasi *walk-in* atau via telepon.
-- 📊 **Revenue & Occupancy Analytics:** Laporan tingkat hunian (*Occupancy Rate %*), *Average Daily Rate (ADR)*, dan proyeksi pendapatan.
-
-### 3. Payment Gateway & Webhook Asinkron
-- 💳 **Metode Pembayaran Lengkap:** QRIS, Virtual Account Bank (BCA, Mandiri, BRI, BNI), Credit Card, dan E-Wallet via Midtrans / Xendit.
-- 🔒 **Webhook Security Idempotent:** Pemrosesan callback aman dari ganda transaksi dan otomatis memperbarui status DB secara *real-time*.
+Redesign website Vije Boutique Resort berfokus pada transformasi visual & UX tanpa mengubah bisnis proses utama:
+- **Kesan Instan:** Memunculkan nuansa eksklusif, tenang, intimate, dan premium sejak detik pertama dibuka.
+- **Hierarki Desain:** **Photography > Typography > Whitespace > Storytelling > CTA**.
+- **Tanpa AI Cliché:** Bebas dari elemen dekoratif neon berisik, border berlebihan, shadow berat, atau tampilan kaku khas OTA (Agoda/Booking.com).
 
 ---
 
-## 💳 Arsitektur Integrasi Payment Gateway & WhatsApp Engine
+## 🎨 Color Palette & Typography
 
-```
-[ Tamu (Frontend Vue/Inertia) ] ──(1. Tokenisasi)──> [ Payment Gateway (Midtrans) ]
-               │                                                  │
-   (2. Charge Transaction)                               (3. Otorisasi Finansial)
-               ▼                                                  ▼
-[ Backend (Laravel 11 Engine) ]  <──(4. Webhook Callback)── [ Bank / E-Wallet ]
-               │
-               └──(5. Trigger Notifikasi)──> [ WhatsApp Engine Gateway ] ──> [ WA Tamu (PDF Voucher) ]
-```
+### Palet Warna Natural & Luxury
+- **Primary:** Warm Ivory (`#FAF8F5`), Cream (`#F4EFE6`), Sand (`#E6DEC9`), Warm Beige (`#D9CEB2`).
+- **Secondary:** Deep Forest Green (`#1C2826`), Dark Olive (`#2B3023`), Charcoal (`#1A1A1A`).
+- **Accent:** Muted Gold / Bronze (`#C5A059`).
+- **Background:** Off-White / Ivory (`#FDFBF7`) / Obsidian Onyx (`#121212`).
+
+### Tipografi Editorial
+- **Heading / Display:** *Cormorant Garamond* / *Playfair Display* / *Cinzel* (Serif Mewah & Spacious).
+- **Body Text:** *Plus Jakarta Sans* / *Inter* / *Manrope* (Sans-Serif Bersih & Highly Readable).
 
 ---
 
-## 🛠️ Instalasi & Pengoperasian Lokal
+## 🏛️ Blueprint Struktur Homepage
 
-### 1. Clone & Install Dependensi
+1. **Full-screen Hero:** Immersive resort photography/video, minimal navigation, tagline *"Where Luxury Meets Serenity"*, dan smooth fade/zoom animations.
+2. **Editorial Introduction:** *"An intimate retreat designed for those who appreciate the beauty of slow living"*.
+3. **Rooms & Villas Showcase:** Editorial layout (1 featured accommodation + supporting units) lengkap dengan spesifikasi luas ($m^2$), amenitas, dan CTA "Explore".
+4. **Experience & Wellness:** Menjual pengalaman menginap (Private dining, Spa treatment, Infinity pool, Cultural tours).
+5. **Luxury Dining Showcase:** Visual atmosphere restoran, signature dishes, dan private dining options.
+6. **Editorial Gallery:** Layout masonry/magazine grid resolusi tinggi.
+7. **Location & Storytelling:** Peta interaktif & narasi lokasi eksklusif resort.
+8. **Minimalist Testimonials:** Large quotation typography dari tamu.
+9. **Conversion Booking CTA:** Full-width background *"Your Private Escape Awaits"* + *"Book Your Stay"*.
+10. **Luxury Minimalist Footer:** Navigasi elegan, informasi kontak, dan legal links.
+
+---
+
+## ⚡ Teknologi & Performa
+
+- **Backend Engine:** Laravel 11 (PHP 8.2+).
+- **Frontend Stack:** Vue 3 (Inertia.js), Tailwind CSS, Framer Motion / Subtle CSS Transitions, `@lucide/vue`.
+- **Payment & WA Engine:** Midtrans / Xendit Payment Gateway & Automated WhatsApp E-Voucher Engine.
+- **Optimasi Performa:** Format WebP/AVIF, Lazy Loading, LCP Hero Optimization, Core Web Vitals tinggi.
+
+---
+
+## 🚀 Alur Git & Production Deploy
+
 ```bash
-git clone git@github.com:hasanarofid/sistem-hotel.git
-cd sistem-hotel
-composer install
-npm install
+# Build frontend assets
+npm run build
+
+# Commit dan Push ke Repository
+git add .
+git commit -m "feat/redesign: implement luxury boutique resort prompt & system rules"
+git push origin master
 ```
-
-### 2. Environment & Database Migration
-```bash
-cp .env.example .env
-php artisan key:generate
-php artisan migrate --seed
-php artisan storage:link
-```
-
-### 3. Jalankan Development Server
-```bash
-# Terminal 1: Vite Frontend Development Server
-npm run dev
-
-# Terminal 2: Laravel Backend Server
-php artisan serve
-```
-
----
-
-## 🔄 Alur Git & Production Auto-Deploy
-
-1. Build frontend assets:
-   ```bash
-   npm run build
-   ```
-2. Commit dan Push ke Repository Git Baru:
-   ```bash
-   git add .
-   git commit -m "feat: setup sistem-hotel direct booking engine & rules"
-   git remote set-url origin git@github.com:hasanarofid/sistem-hotel.git
-   git push -u origin master
-   ```
 
 ---
 

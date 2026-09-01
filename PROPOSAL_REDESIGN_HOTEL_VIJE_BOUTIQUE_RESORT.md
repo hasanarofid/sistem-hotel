@@ -19,7 +19,7 @@
 
 **Vije Boutique Resort** merupakan destinasi hunian resort eksklusif yang menawarkan pengalaman menginap nan tenang, elegan, dan kaya akan keindahan alam. Dalam industri *luxury hospitality* modern, tampilan website bukan sekadar brosur digital, melainkan **kesan pertama (*first impression*)** sekaligus pintu utama penggerak reservasi langsung (*direct booking*) yang bebas komisi pihak ketiga (OTA).
 
-Melalui proposal ini, kami mengajukan solusi **Redesign Total Tampilan Website & Modernisasi Pengalaman Pengguna (UX)** Vije Boutique Resort dengan mengusung standar visual **Aman Resorts & Kempinski Hotels** — memadukan keanggunan minimalis (*understated luxury*), ritme visual alami, typography kelas dunia, serta *booking engine* yang intuitif, cepat, dan transaksional.
+Melalui proposal ini, kami mengajukan solusi **Redesign Total Tampilan Website & Modernisasi Pengalaman Pengguna (UX)** Vije Boutique Resort dengan mengusung standar visual **"Quiet Luxury Boutique Resort"** (inspirasi **Aman Resorts & Kempinski Hotels**) — memadukan keanggunan minimalis (*understated luxury*), ritme visual alami, typography kelas dunia, serta *booking engine* yang intuitif, cepat, dan transaksional.
 
 ### Target Utama Redesign:
 1. **Elevasi Citra Visual (Aman & Kempinski Style):** Mengubah tampilan fisik digital resort agar mencerminkan kemewahan *5-star boutique luxury*, kaya visual immersive (foto/video resolusi tinggi, micro-animations, typography serif yang elegan).
@@ -37,17 +37,19 @@ Melalui proposal ini, kami mengajukan solusi **Redesign Total Tampilan Website &
   +-----------------------------------------------------------------------+
   |  [ Aman Style ]      : Minimalis, Tenang, Earthy Tones, Immersive     |
   |  [ Kempinski Style ] : Elegansi Klasik-Modern, Presisi, Exclusivity   |
+  |  [ Principle ]       : "Less, But Better" (Quiet Luxury)              |
   +-----------------------------------------------------------------------+
 ```
 
 ### A. Estetika & Palette Warna (Earthy Luxury Colors)
-- **Primary Color:** Deep Bronze / Muted Gold (`#C5A059`) — Menyuarakan eksklusivitas & kehangatan.
-- **Background Color:** Soft Warm Sand / Warm Cream (`#FDFBF7`) & Deep Obsidian Onyx (`#171717`) untuk Dark Accents.
-- **Secondary Accent:** Forest Sage & Warm Charcoal (`#2C3531`) — Mencerminkan alam & ketenangan khas resort.
+- **Primary Color:** Warm Ivory (`#FAF8F5`), Cream (`#F4EFE6`), Sand (`#E6DEC9`), Warm Beige (`#D9CEB2`).
+- **Secondary Color:** Deep Forest Green (`#1C2826`), Dark Olive (`#2B3023`), Charcoal (`#1A1A1A`).
+- **Accent Color:** Muted Gold / Bronze (`#C5A059`).
+- **Background Color:** Off White / Warm Ivory (`#FDFBF7`) & Deep Obsidian Onyx (`#121212`) untuk Dark Accents.
 
 ### B. Tipografi & Tata Letak
-- **Heading Font:** *Cormorant Garamond* / *Cinzel* (Serif mewah khas majalah gaya hidup premium).
-- **Body Font:** *Plus Jakarta Sans* / *Inter* (San-serif bersih, sangat legibel untuk reservasi & rincian fasilitas).
+- **Heading Font:** *Cormorant Garamond* / *Playfair Display* / *Cinzel* (Serif mewah khas majalah gaya hidup premium).
+- **Body Font:** *Plus Jakarta Sans* / *Inter* / *Manrope* (San-serif bersih, sangat legibel untuk reservasi & rincian fasilitas).
 - **Layout Rhythm:** Full-width hero videos/sliders, *white space* yang luas (generous whitespace), dan galeri foto berbasis masonry grid interaktif.
 
 ---
@@ -102,11 +104,6 @@ flowchart TD
     EE --> JJ[Export Data Reservasi ke Excel / PDF]
 ```
 
-#### Penjelasan Tahapan Operasional Hotel:
-1. **Visual Reservation Calendar:** Tampilan kalender interaktif untuk melihat okupansi kamar harian/bulanan secara sekilas.
-2. **Manajemen Tarif Dinamis (Dynamic Pricing):** Admin dapat mengubah harga kamar atau membuat diskon promosi khusus musim liburan (*High Season*) dalam hitungan detik.
-3. **Manajemen Status Kamar:** Memudahkan tim *housekeeping* dan *receptionist* memantau ketersediaan kamar yang siap huni.
-
 ---
 
 ### C. Flow 3: Engine Integrasi Payment Gateway & WhatsApp Automatic Notification
@@ -149,9 +146,29 @@ sequenceDiagram
 
 ---
 
-## 5. RENCANA KERJA & TIMELINE EKSEKUSI (PROJECT ROADMAP)
+## 5. BLUEPRINT AUDIT & SPESIFIKASI PROMPT DESAIN AI (22 POIN)
 
-Estimasi total durasi pengerjaan adalah **3 hingga 4 Minggu** dengan tahapan yang terukur:
+Sebagai jaminan kualitas hasil redesign visual, seluruh implementasi mengikuti spesifikasi berikut:
+
+1. **Brand Positioning:** *"Quiet Luxury Boutique Resort"* — Minimal, Organic, Natural, Timeless, Editorial.
+2. **Strict Avoidances:** Tanpa gradient berisik, tanpa border/shadow berat, tanpa tampilan kaku khas OTA.
+3. **Typography Standard:** Display Serif (*Cormorant Garamond / Playfair Display*) + Body Sans-Serif (*Inter / Plus Jakarta Sans*).
+4. **Color Palette:** Warm Ivory, Sand, Deep Forest Green, Charcoal, Accent Muted Gold (`#C5A059`).
+5. **Full-screen Immersive Hero:** Tagline *"Where Luxury Meets Serenity"*, minimal navigation, smooth slow zoom & fade-in typography.
+6. **Editorial Introduction:** *"An intimate retreat designed for those who appreciate the beauty of slow living"*.
+7. **Rooms & Villas Layout:** Editorial 1-featured accommodation + supporting suites (bukan sekadar card grid biasa).
+8. **Experience & Dining Section:** Menjual suasana private dining, spa treatment, pool, & local culture.
+9. **Editorial Masonry Gallery:** Foto resolusi tinggi gaya majalah *luxury travel*.
+10. **Location Storytelling:** Peta interaktif & rincian perjalanan menuju resort.
+11. **Minimalist Guest Testimonials:** Quote typography yang seimbang dan tenang.
+12. **Conversion Strategy:** Section *"Your Private Escape Awaits"* dengan CTA *"Book Your Stay"*.
+13. **Responsive Breakpoints:** Teruji presisi di Mobile 390px/430px, Tablet, Laptop 1366px, & Desktop 1440px/1920px.
+14. **Subtle Animation Standard:** Smooth fade-up, image reveal, slow parallax (durasi 400ms–1000ms).
+15. **Performa High-Speed:** WebP/AVIF images, lazy loading, LCP hero optimization, Core Web Vitals tinggi.
+
+---
+
+## 6. RENCANA KERJA & TIMELINE EKSEKUSI (PROJECT ROADMAP)
 
 ```
 [Minggu 1] : Discovery, Wireframing & Approval UI/UX Concept (Aman/Kempinski Style)
@@ -162,34 +179,11 @@ Estimasi total durasi pengerjaan adalah **3 hingga 4 Minggu** dengan tahapan yan
 
 ---
 
-## 6. PORTOFOLIO & KAPABILITAS PENGEMBANG (PORTFOLIO SHOWCASE)
+## 7. PORTOFOLIO & KAPABILITAS PENGEMBANG (PORTFOLIO SHOWCASE)
 
 Sebagai **Senior Full-Stack Developer**, saya memiliki spesialisasi dalam membangun sistem web modern, performa tinggi, dan terintegrasi payment gateway serta otomasi notifikasi.
 
-### Highlight Pengalaman & Proyek Relevan:
-1. **Hospitality & Luxury Booking Platform Design:**
-   - Pengalaman merancang antarmuka web modern dengan fokus pada konversi reservasi tinggi, performa kilat, dan estetika visual tingkat tinggi.
-2. **Engine Transaksi & Payment Gateway Integration:**
-   - Pengalaman mengintegrasikan Midtrans Payment Gateway (Virtual Account, QRIS, Credit Card) dengan penanganan webhook idempoten aman terbebas dari kesalahan transaksi.
-3. **Automated WhatsApp Notification Gateway:**
-   - Pengalaman membangun engine notifikasi WhatsApp otomatis untuk konfirmasi invoice, pengiriman e-voucher PDF, dan reminder sistem.
-4. **Teknologi Stack Teruji & Modern:**
-   - **Backend:** Laravel 11 (PHP 8.2+) — Andal, aman, dan mudah dipelihara.
-   - **Frontend:** Vue 3 (Inertia.js), Tailwind CSS, Framer Motion / Smooth Animations.
-   - **Database:** MySQL / PostgreSQL.
-
 > Portofolio lengkap dan karya web aplikasi interaktif lainnya dapat dilihat langsung di website resmi saya: **[hasanarofid.site](https://hasanarofid.site)**
-
----
-
-## 7. PENUTUP & REKOMENDASI TAHAP SELANJUTNYA
-
-Redesign tampilan Vije Boutique Resort berkonsep **Kempinski & Aman Luxury Style** akan menaikkan posisi (*brand positioning*) resort di tingkat internasional, menarik perhatian tamu *high-end*, serta meningkatkan secara signifikan porsi reservasi langsung (*direct booking*).
-
-### Rekomendasi Langkah Selanjutnya:
-1. **Diskusi & Alignment Konsep Visual:** Konfirmasi preferensi visual (foto resort, tone warna, dan referensi kamar).
-2. **Penyusunan Mockup UI/UX Initial:** Pembuatan draft awal desain halaman depan (*Home*) & *Booking Bar*.
-3. **Kesepakatan Kerjasama & Penandatanganan MoU Project.**
 
 ---
 
