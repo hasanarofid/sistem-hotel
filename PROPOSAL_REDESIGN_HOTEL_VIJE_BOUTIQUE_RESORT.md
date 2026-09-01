@@ -179,7 +179,64 @@ Sebagai jaminan kualitas hasil redesign visual, seluruh implementasi mengikuti s
 
 ---
 
-## 7. PORTOFOLIO & KAPABILITAS PENGEMBANG (PORTFOLIO SHOWCASE)
+## 7. RINCIAN PENAWARAN HARGA & PAKET INVESTASI (COMMERCIAL PROPOSAL)
+
+Kami menawarkan 3 pilihan paket investasi pengembangan yang dapat disesuaikan dengan skala prioritas dan target operasional Vije Boutique Resort:
+
+### A. Tabel Skema Paket Investasi
+
+| Fitur & Layanan | Paket Standard | Paket Professional ⭐ *(RECOMMENDED)* | Paket Enterprise |
+| :--- | :---: | :---: | :---: |
+| **Redesign Tampilan Publik (Quiet Luxury)** | ✅ Ya | ✅ Ya | ✅ Ya |
+| **Direct Booking Engine (Form #booking)** | ✅ Ya | ✅ Ya | ✅ Ya |
+| **Integrasi Payment Gateway (QRIS, VA, CC)** | ✅ Ya | ✅ Ya | ✅ Ya |
+| **Mobile-First & Core Web Vitals Optimization** | ✅ Ya | ✅ Ya | ✅ Ya |
+| **Quiet Luxury Admin Management Console** | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **Manajemen Kamar, Rate Dinamis & Kuota** | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **Role-Based Access Control (5 RBAC Roles)** | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **WhatsApp Automated E-Voucher & Email Resi** | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **Audit Logging & Export Laporan Keuangan** | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **Integrasi Multi-Branch & Custom PMS API** | ❌ Tidak | ❌ Tidak | ✅ Ya |
+| **Masa Garansi & Pemeliharaan System** | 3 Bulan | **6 Bulan** | 12 Bulan |
+| **Sesi Pelatihan (Training) Staf Hotel** | 1 Sesi | **2 Sesi** | Unlimited |
+| **NILAI INVESTASI (IDR)** | **Rp 17.500.000** | **Rp 28.500.000** | **Rp 45.000.000** |
+
+---
+
+### B. Biaya Layanan Pihak Ketiga & Infrastruktur (Estimasi Operasional)
+
+| Komponen Layanan | Biaya / Tarif | Keterangan & Provider |
+| :--- | :--- | :--- |
+| **Cloud VPS Server & Domain SSL** | **Rp 2.500.000 / Tahun** | *GRATIS 1 Tahun Pertama* (High Availability SSD, Daily Backup, Wildcard SSL). |
+| **Payment Gateway Account (Midtrans / Xendit)** | **Rp 0 (Tanpa Registration Fee)** | Komisi per transaksi disettle langsung oleh provider (QRIS ~0.7%, Virtual Account ~Rp 4.000/trx). |
+| **WhatsApp API Notification Engine** | **Sesuai Pemakaian Pesan** | Integrasi WA-Gateway untuk pengiriman E-Voucher & Resi. |
+
+---
+
+### C. Skema Termin Pembayaran (Payment Terms)
+
+Untuk menjamin kenyamanan dan transparansi pengerjaan proyek, pembayaran dilakukan dalam **3 Termin (Milestone-based Payment)**:
+
+1. **Termin 1 — Down Payment (40%):**
+   - Dibayarkan saat penandatanganan kesepakatan (MoU) & Kick-off pengerjaan proyek.
+   - *Pekerjaan:* Riset visual, wireframing, dan pembentukan struktur dasar database.
+2. **Termin 2 — Milestone Development (40%):**
+   - Dibayarkan setelah seluruh pengembangan Frontend Quiet Luxury, Backend REST API, dan sistem integrasi selesai disajikan di environment Staging.
+   - *Pekerjaan:* Pengujian alur booking, verifikasi payment gateway, dan penyempurnaan responsivitas mobile.
+3. **Termin 3 — Pelunasan & Go-Live (20%):**
+   - Dibayarkan setelah tahapan *User Acceptance Test (UAT)* disetujui, pelatihan staf hotel selesai, dan sistem resmi diluncurkan secara *Live* pada domain utama resort.
+
+---
+
+### D. Garansi & Dukungan Layanan Purna Jual (Support & Guarantee)
+
+- 🛡️ **Garansi Bebas Bug (6 Bulan):** Garansi penuh perbaikan jika terjadi kesalahan teknis atau bug sistem pasca launching.
+- 🎓 **Pelatihan Staf Hotel (Training Session):** Pembekalan langsung bagi tim *Frontdesk*, *General Manager*, dan *Finance* dalam mengoperasikan panel admin.
+- 💾 **Automated Database Backup:** Konfigurasi pembackupan database otomatis harian untuk mencegah kehilangan data reservasi.
+
+---
+
+## 8. PORTOFOLIO & KAPABILITAS PENGEMBANG (PORTFOLIO SHOWCASE)
 
 Sebagai **Senior Full-Stack Developer**, saya memiliki spesialisasi dalam membangun sistem web modern, performa tinggi, dan terintegrasi payment gateway serta otomasi notifikasi.
 
@@ -188,7 +245,7 @@ Sebagai **Senior Full-Stack Developer**, saya memiliki spesialisasi dalam memban
 ---
 
 ### **INFORMASI KONTAK & KONSULTASI**
-Jika ada pertanyaan atau bagian dari proposal ini yang ingin disesuaikan, silakan hubungi kami melalui:
+Jika ada pertanyaan atau bagian dari penawaran harga ini yang ingin disesuaikan dengan budget manajemen Vije Boutique Resort, silakan hubungi kami melalui:
 
 - 💬 **WhatsApp:** [https://Wa.me/628814959247](https://Wa.me/628814959247) (`+62 881-4959-247`)  
 - 🌐 **Website:** [hasanarofid.site](https://hasanarofid.site)  
