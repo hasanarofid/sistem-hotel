@@ -4,44 +4,57 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Rpp;
-use App\Models\TokenPackage;
-use App\Models\TokenTransaction;
-use App\Models\TokenLog;
+use App\Models\Room;
+use App\Models\Booking;
 use Inertia\Inertia;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
     /**
-     * Display the Admin Dashboard for KADU (Karsa Edukasi Vokasi).
+     * Display the Quiet Luxury Hotel Management Dashboard for Vije Boutique Resort.
      */
     public function index()
     {
-        $totalUsers = User::count();
-        $totalRpps = Rpp::count();
-        $totalPackages = TokenPackage::where('is_active', true)->count();
-        $totalRevenue = TokenTransaction::where('payment_status', 'paid')->sum('amount');
-        $totalTokensSold = TokenTransaction::where('payment_status', 'paid')->sum('tokens');
+        $totalRooms = Room::count();
+        $totalUnits = Room::sum('total_units');
+        
+        $totalBookings = Booking::count();
+        $paidBookings = Booking::whereIn('payment_status', ['paid', 'checked_in', 'checked_out']);
+        
+        $totalRevenue = (float) $paidBookings->sum('total_price');
+        $pendingBookingsCount = Booking::where('payment_status', 'pending')->count();
+        $checkedInCount = Booking::where('payment_status', 'checked_in')->count();
 
-        $recentUsers = User::latest()->take(5)->get();
-        $recentRpps = Rpp::with('user')->latest()->take(5)->get();
-        $recentTransactions = TokenTransaction::with('user', 'package')->latest()->take(5)->get();
-        $recentLogs = TokenLog::with('user')->latest()->take(10)->get();
-        $lowTokenUsers = User::where('tokens', '<=', 2)->latest()->take(6)->get();
+        // Calculate Occupancy Rate % based on occupied units vs total units
+        $occupiedUnits = Booking::whereIn('payment_status', ['checked_in', 'paid'])
+            ->whereDate('check_in', '<=', Carbon::today())
+            ->whereDate('check_out', '>=', Carbon::today())
+            ->count();
+
+        $occupancyRate = $totalUnits > 0 ? round(($occupiedUnits / $totalUnits) * 100) : 0;
+
+        $recentBookings = Booking::with('room')
+            ->latest()
+            ->take(6)
+            ->get();
+
+        $roomsOverview = Room::withCount(['bookings' => function($q) {
+            $q->whereIn('payment_status', ['paid', 'checked_in']);
+        }])->get();
 
         return Inertia::render('Admin/Dashboard', [
             'stats' => [
-                'total_users' => $totalUsers,
-                'total_rpps' => $totalRpps,
-                'total_packages' => $totalPackages,
+                'total_rooms' => $totalRooms,
+                'total_units' => $totalUnits,
+                'total_bookings' => $totalBookings,
+                'occupancy_rate' => $occupancyRate,
                 'total_revenue' => $totalRevenue,
-                'total_tokens_sold' => $totalTokensSold,
+                'pending_payments' => $pendingBookingsCount,
+                'checked_in_guests' => $checkedInCount,
             ],
-            'recent_users' => $recentUsers,
-            'recent_rpps' => $recentRpps,
-            'recent_transactions' => $recentTransactions,
-            'recent_logs' => $recentLogs,
-            'low_token_users' => $lowTokenUsers,
+            'recent_bookings' => $recentBookings,
+            'rooms_overview' => $roomsOverview,
         ]);
     }
 }

@@ -10,38 +10,49 @@ use Spatie\Permission\PermissionRegistrar;
 class RoleAndPermissionSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds for Vije Boutique Resort RBAC.
      */
     public function run(): void
     {
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // Create permissions
+        // Hotel System Permissions
         $permissions = [
             'manage settings',
             'manage pages',
             'manage posts',
             'manage users',
-            'manage all rpps',
-            'create rpp',
-            'view rpp',
-            'delete rpp',
+            'manage rooms',
+            'manage bookings',
+            'manage finance',
+            'manage cms',
+            'view audit logs',
+            'process checkin',
         ];
 
         foreach ($permissions as $permission) {
             Permission::findOrCreate($permission);
         }
 
-        // Create roles and assign permissions
-        $adminRole = Role::findOrCreate('admin');
-        $adminRole->givePermissionTo(Permission::all());
+        // PRD Defined Roles
+        $superAdmin = Role::findOrCreate('super_admin');
+        $superAdmin->givePermissionTo(Permission::all());
 
+        $admin = Role::findOrCreate('admin');
+        $admin->givePermissionTo(Permission::all());
+
+        $reservationStaff = Role::findOrCreate('reservation_staff');
+        $reservationStaff->givePermissionTo(['manage bookings', 'process checkin', 'manage rooms']);
+
+        $finance = Role::findOrCreate('finance');
+        $finance->givePermissionTo(['manage finance', 'manage bookings', 'view audit logs']);
+
+        $contentManager = Role::findOrCreate('content_manager');
+        $contentManager->givePermissionTo(['manage cms', 'manage pages', 'manage posts']);
+
+        // Legacy compatibility roles
         $userRole = Role::findOrCreate('user');
-        $userRole->givePermissionTo(['create rpp', 'view rpp', 'delete rpp']);
-
-        // Alias client role for backward compatibility
         $clientRole = Role::findOrCreate('client');
-        $clientRole->givePermissionTo(['create rpp', 'view rpp', 'delete rpp']);
     }
 }

@@ -5,25 +5,36 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Post;
-use App\Models\Rpp;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Seed the application's database for Vije Boutique Resort.
      */
     public function run(): void
     {
         // 1. Seed Roles and Permissions
         $this->call(RoleAndPermissionSeeder::class);
 
-        // 2. Seed Default Admin User
-        $admin = User::updateOrCreate(
-            ['email' => 'admin@hotel.com'],
+        // 2. Seed Default Super Admin User
+        $superAdmin = User::updateOrCreate(
+            ['email' => 'superadmin@vijeboutiqueresort.com'],
             [
-                'name' => 'Administrator hotel',
+                'name' => 'Super Administrator Vije',
+                'username' => 'superadmin',
+                'password' => bcrypt('password'),
+                'email_verified_at' => now(),
+            ]
+        );
+        $superAdmin->assignRole('super_admin');
+
+        // 3. Seed Default Admin User
+        $admin = User::updateOrCreate(
+            ['email' => 'admin@vijeboutiqueresort.com'],
+            [
+                'name' => 'General Manager Admin',
                 'username' => 'admin',
                 'password' => bcrypt('password'),
                 'email_verified_at' => now(),
@@ -31,96 +42,43 @@ class DatabaseSeeder extends Seeder
         );
         $admin->assignRole('admin');
 
-        // 3. Seed Default User (Guru Vokasi)
-        $user = User::updateOrCreate(
-            ['email' => 'user@hotel.com'],
+        // 4. Seed Reservation Staff
+        $reservationStaff = User::updateOrCreate(
+            ['email' => 'reservation@vijeboutiqueresort.com'],
             [
-                'name' => 'Guru Vokasi (User)',
-                'username' => 'user',
+                'name' => 'Reservation Frontdesk Staff',
+                'username' => 'reservation',
                 'password' => bcrypt('password'),
                 'email_verified_at' => now(),
             ]
         );
-        $user->assignRole('user');
+        $reservationStaff->assignRole('reservation_staff');
 
-        $budi = User::updateOrCreate(
-            ['email' => 'budi@hotel.com'],
+        // 5. Seed Finance Officer
+        $financeUser = User::updateOrCreate(
+            ['email' => 'finance@vijeboutiqueresort.com'],
             [
-                'name' => 'Budi Santoso, S.Pd',
-                'username' => 'budi',
+                'name' => 'Finance & Accounting Lead',
+                'username' => 'finance',
                 'password' => bcrypt('password'),
                 'email_verified_at' => now(),
             ]
         );
-        $budi->assignRole('user');
+        $financeUser->assignRole('finance');
 
-        // Assign 'user' role to any existing user in database without a role
-        User::doesntHave('roles')->get()->each(function ($u) {
-            $u->assignRole('user');
+        // Assign 'admin' role to any legacy admin users
+        User::where('email', 'admin@hotel.com')->get()->each(function ($u) {
+            $u->assignRole('admin');
         });
 
         // Ensure all admin users have email_verified_at set
         User::role('admin')->update(['email_verified_at' => now()]);
+        User::role('super_admin')->update(['email_verified_at' => now()]);
 
-        // 4. Seed Initial Sample RPP Vokasi
-        Rpp::updateOrCreate(
-            ['title' => 'RPP Matematika Vokasi TKR - Persamaan Linier & Rasio Presisi Otomotif'],
-            [
-                'user_id' => $user->id,
-                'mata_pelajaran' => 'Matematika Vokasi',
-                'kelas_semester' => 'X / Ganjil',
-                'alokasi_waktu' => '3 JP (3 x 45 Menit)',
-                'jurusan_smk' => 'Teknik Kendaraan Ringan (TKR)',
-                'capaian_pembelajaran' => 'Peserta didik mampu menerapkan sistem persamaan linier dan kalkulasi rasio presisi untuk memecahkan masalah teknis otomotif.',
-                'gaya_belajar' => ['Visual', 'Kinestetik'],
-                'karakteristik_fisik' => 'Non-Inklusi (Reguler)',
-                'model_pembelajaran' => 'Project-Based Learning (PBL)',
-                'metode_pembelajaran' => 'Diskusi Kelompok, Simulasi, dan Praktik Bengkel',
-                'kemitraan_dudi' => 'Industri Pasangan DU/DI (PT. Astra Otoparts) & Guru Tamu Praktisi',
-                'ruang_fisik' => 'Bengkel Otomotif / Ruang Teori SMK',
-                'ruang_virtual' => 'LMS Google Classroom & WhatsApp Group Class',
-                'software_digital' => 'Platform Merdeka Mengajar (PMM), Simulator Engine Scan, Canva',
-                'dimensi_profil' => ['Bernalar Kritis (Critical Thinking)', 'Kreatif & Inovatif (Creativity)', 'Gotong Royong & Kolaboratif (Collaboration)', 'Kompeten & Berstandar Industri (Vokasi)'],
-                'content_rpp' => "I. KERANGKA PEMBELAJARAN & EKOSISTEM\n- Model: Project-Based Learning (PBL)\n- Industri: PT. Astra Otoparts\n\nII. DIMENSI PROFIL LULUSAN\n- Bernalar Kritis, Kreatif, & Berstandar Industri\n\nIII. TUJUAN PEMBELAJARAN (MEANINGFUL LEARNING)\n- Memahami kalkulasi rasio presisi dalam penyetelan celah katup mesin kendaraan.\n\nIV. STIMULUS LITERASI & NUMERASI TERAPAN\n- Stimulus Literasi: Panduan service manual kendaraan ringan.\n- Stimulus Numerasi: Pengukuran micrometer & perbandingan rasio kompresi.\n\nV. LANGKAH-LANGKAH PEMBELAJARAN (DEEP LEARNING)\nA. Kegiatan Awal: Langkah Berkesadaran (Mindful), Kebermaknaan (Meaningful), Menggembirakan (Joyful).\nB. Kegiatan Inti: Pemahaman Konsep, Aplikasi Praktik Bengkel, Refleksi Metakognisi.\nC. Kegiatan Penutup.\n\nVI. ASESMEN PEMBELAJARAN TERINTEGRASI\n- Asesmen Formatif & Sumatif.",
-                'content_media' => "1. Lembar Kerja Peserta Didik (LKPD) Otomotif\n2. Slide Presentation Rasio Kompresi\n3. Simulation App Engine Scan",
-                'content_video_script' => "Prompt AI: 'Buatkan video animasi 3D langkah-langkah pengukuran rasio presisi celah katup otomotif SMK'.",
-                'content_materi' => "Ringkasan Materi Literasi & Numerasi Terapan SMK: Rumus persamaan linier untuk pengukuran rasio torsi dan tekanan silinder.",
-                'status' => 'published',
-            ]
-        );
+        // 6. Seed Hotel Domain Data (Rooms, Villas, Bookings)
+        $this->call(HotelSeeder::class);
 
-        // 5. Seed Default Token Packages
-        \App\Models\TokenPackage::updateOrCreate(
-            ['name' => 'Paket Starter'],
-            [
-                'tokens' => 10,
-                'price' => 50000,
-                'description' => '10 Token RPP Deep Learning Vokasi. Cocok untuk uji coba pembuatan modul ajar guru SMK.',
-                'is_active' => true,
-            ]
-        );
-
-        \App\Models\TokenPackage::updateOrCreate(
-            ['name' => 'Paket Professional'],
-            [
-                'tokens' => 50,
-                'price' => 200000,
-                'description' => '50 Token RPP. Hemat & Terfavorit untuk persiapan 1 semester penuh guru SMK.',
-                'is_active' => true,
-            ]
-        );
-
-        \App\Models\TokenPackage::updateOrCreate(
-            ['name' => 'Paket Ultimate Sekolah'],
-            [
-                'tokens' => 200,
-                'price' => 650000,
-                'description' => '200 Token RPP. Pilihan terbaik untuk MGMP, tim Kurikulum, atau kelompok guru SMK.',
-                'is_active' => true,
-            ]
-        );
-
-        // 6. Seed Settings & Pages
+        // 7. Seed Settings & Pages
         $this->call(SettingSeeder::class);
         $this->call(PageAndSectionSeeder::class);
     }

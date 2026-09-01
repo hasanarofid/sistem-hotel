@@ -1,4 +1,4 @@
-# Aturan Pengembangan & Redesign Website Hotel - Hasan Hotel (Vije Boutique Resort)
+# Aturan Pengembangan & Redesign Website Hotel - Vije Boutique Resort
 
 - **Domain Utama Target:** https://www.vijeboutiqueresort.com / https://hotel.hasanarofid.site
 - **Branch Utama:** `main` / `master`
@@ -9,8 +9,8 @@
 
 ## 1. Peran, Identitas & Prinsip Utama AI Redesign
 
-- **Peran AI:** Senior UI/UX Designer, Luxury Hospitality Website Designer, dan Senior Full-Stack Developer.
-- **Tugas Utama:** REDESIGN VISUAL dan UX dari website existing ([www.vijeboutiqueresort.com](https://www.vijeboutiqueresort.com)) tanpa mengubah bisnis proses utama yang sudah berjalan.
+- **Peran AI:** Senior UI/UX Designer, Luxury Hospitality Website Specialist, dan Senior Full-Stack Developer.
+- **Tugas Utama:** Rebuild & Redesign Vije Boutique Resort menjadi end-to-end Hotel Website & Booking Management System dengan fokus Luxury Boutique Resort / Quiet Luxury dan direct booking channel.
 - **Prinsip Utama (Final Design Principle):**
   > **"Less, but better."**  
   > Website harus memberikan kesan instan saat pertama dibuka: *"Ini resort luxury boutique premium"* — bukan *"Ini website template hotel generik"*.
@@ -18,25 +18,46 @@
 
 ---
 
-## 2. Referensi Desain & Brand Direction
+## 2. Arsitektur Teknis & Modul PRD
+
+### Tech Stack Standard:
+- **Frontend:** Next.js / Vue 3 (Inertia.js), TypeScript, Tailwind CSS, Framer Motion.
+- **Backend:** Laravel REST API (PHP 8.2+), Laravel Sanctum / JWT.
+- **Database:** PostgreSQL / MySQL (ERD terstruktur), Redis (Queue/Cache).
+- **Storage & Email:** S3-compatible / local storage, SMTP / transactional email, WA Gateway Engine.
+- **Payment Abstraction:** `PaymentGatewayInterface` (Midtrans & Xendit).
+
+### Modul Kunci PRD:
+1. Public Website & Editorial Landing Page
+2. Room & Accommodation Management
+3. Direct Online Booking Engine
+4. Guest & CRM Management
+5. Booking Management & Calendar
+6. Payment Gateway Abstraction & Webhooks
+7. Admin Dashboard & Content Management System (CMS)
+8. Gallery & Hotel Facility Management
+9. Promo / Discount / Voucher Engine
+10. Reporting, Financial Overview & Audit Log
+11. User & Role Management (RBAC)
+12. Notification System (Automated E-Voucher WhatsApp & Email PDF)
+
+---
+
+## 3. Aturan Bisnis & Concurrency (Key Business Rules)
+
+- **Kalkulasi Server-Side:** Seluruh hitungan harga, ketersediaan, promo, service charge, dan pajak dilakukan di backend.
+- **Double Booking Prevention:** Gunakan `DB::transaction()` dan locking atomic (`lockForUpdate()`) saat membuat reservasi.
+- **Verifikasi Webhook Payment:** Booking dikonfirmasi hanya jika signature webhook payment gateway valid atau via verifikasi admin manual.
+- **Audit Log Mandatory:** Setiap transaksi, perubahan kuota kamar, dan aksi admin wajib masuk ke Audit Log.
+- **RBAC Boundaries:** Enforce role boundaries (`Super Admin`, `Admin`, `Reservation Staff`, `Finance`, `Content Manager`).
+
+---
+
+## 4. Referensi Desain & Brand Direction
 
 ### Referensi Visual Standard:
 - **Aman Resorts:** Minimal luxury, strong photography, calm atmosphere, nature connection, editorial typography, immersive storytelling.
 - **Kempinski Hotels:** European luxury, elegant typography, premium hospitality, sophisticated layout, strong brand presence.
-
-### Visual Identity: "Quiet Luxury Boutique Resort"
-- **Karakter Visual:** Minimal, Elegant, Organic, Natural, Timeless, Premium, Editorial, Sophisticated.
-- **Dilarang (Strictly Avoid):**
-  - Gradient berlebihan / neon berisik (desain terlalu "AI").
-  - Warna terlalu terang / ngejreng.
-  - Card UI yang terlalu banyak & berderet kaku.
-  - Border berlebihan & shadow berat.
-  - Desain seperti OTA/travel booking aggregator (Agoda/Booking.com).
-  - Layout corporate & template hotel murah.
-
----
-
-## 3. Color Palette & Typography Guidelines
 
 ### Color Palette (Natural & Luxury)
 - **Primary:** Warm Ivory (`#FAF8F5`), Cream (`#F4EFE6`), Sand (`#E6DEC9`), Warm Beige (`#D9CEB2`).
@@ -48,53 +69,14 @@
 ### Typography Standard
 - **Display / Heading:** Elegant Serif (`Cormorant Garamond` / `Playfair Display` / `Cinzel`).
 - **Body / Subtitle:** Clean Modern Sans-Serif (`Plus Jakarta Sans` / `Inter` / `Manrope`).
-- **Heading:** Large, elegant, spacious.
-- **Body:** Clean, legible, editorial spacing.
-
----
-
-## 4. Struktur Blueprint Redesign Homepage & Sections
-
-1. **Full-screen Hero:**
-   - Photography/Video resort resolusi tinggi, minimal navigation, logo, tagline elegant (*"Where Luxury Meets Serenity"*), booking CTA.
-   - Micro-animation: Slow image zoom, fade-in typography, smooth transition.
-2. **Editorial Introduction:**
-   - Storytelling pengantar resort (*"An intimate retreat designed for those who appreciate the beauty of slow living"*). Large whitespace & supporting photo.
-3. **Rooms & Villas Showcase:**
-   - Editorial layout (bukan grid card biasa). 1 large featured accommodation + supporting accommodations. Detail: foto, nama, deskripsi, amenitas kunci, luas ($m^2$), kapasitas, CTA "Explore".
-4. **Experience Section:**
-   - Jual pengalaman eksklusif: Private dining, Spa & Wellness, Infinity pool, Sunset cruise, Local experiences.
-5. **Dining Section:**
-   - Editorial luxury restaurant view, signature dishes, private dining atmosphere, bar/lounge.
-6. **Immersive Gallery:**
-   - Editorial masonry / full-width photography layout seperti luxury travel magazine.
-7. **Location & Storytelling:**
-   - Peta interaktif elegan, jarak dari bandara, narasi keindahan lokasi resort.
-8. **Testimonial:**
-   - Minimalist quote typography dari tamu.
-9. **Booking Conversion CTA:**
-   - Section penuh daya pikat (*"Your Private Escape Awaits"*) + CTA *"Book Your Stay"*.
-10. **Luxury Minimalist Footer & Navigation:**
-    - Transparent navbar saat di top, berubah solid/light saat scroll. Mobile navigation berupa hamburger menu yang sangat premium.
 
 ---
 
 ## 5. Standar UX, Animasi, Performa & SEO
 
-### UX & Conversion Strategy
-- Navigasi intuitif, penempatan CTA *"Book Your Stay"* yang konsisten namun tidak agresif (Luxury feel).
-- User dapat menemukan Overview, Rooms, Experience, Location, & Booking dalam hitungan detik.
-
-### Subtle Luxury Animation
-- Durasi transisi 400ms – 1000ms (Fade-up, image reveal, slow parallax, smooth hover).
-- Dilarang: Bounce, excessive scaling, flashing, atau gerakan cepat yang merusak kesan *calm*.
-
-### Performa & Mobile-First
-- Perangkat Target: Mobile (390px/430px), Tablet, Laptop (1366px), Desktop (1440px/1920px).
-- Image Optimization: WebP/AVIF, lazy loading, responsive srcset. Prioritas tinggi pada LCP Hero Image.
-
-### SEO & Accessibility
-- Semantic HTML (H1/H2/H3), Hotel/LocalBusiness Schema.org Structured Data, WCAG-friendly contrast ratio.
+- **Subtle Luxury Animation:** Durasi transisi 400ms – 1000ms (Fade-up, image reveal, slow parallax, smooth hover). Dilarang bounce atau efek flashing cepat.
+- **Performa & Mobile-First:** WebP/AVIF, lazy loading, LCP hero optimization, Core Web Vitals tinggi.
+- **SEO:** Hotel/LocalBusiness Schema.org Structured Data, semantic HTML.
 
 ---
 
@@ -104,6 +86,6 @@
 2. Push commit:
    ```bash
    git add .
-   git commit -m "feat/redesign: update luxury boutique resort rules & architecture"
+   git commit -m "feat/redesign: update luxury boutique resort rules & architecture from PRD"
    git push origin master
    ```

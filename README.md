@@ -1,7 +1,9 @@
-# Hasan Hotel — Luxury Boutique Resort Redesign & Direct Booking System
+# Vije Boutique Resort — Luxury Hotel & Direct Booking Management System
 
-**Hasan Hotel** adalah platform web hospitality & *Direct Booking System* yang dirancang khusus untuk meredesign dan meng-elevasi **Vije Boutique Resort** ([www.vijeboutiqueresort.com](https://www.vijeboutiqueresort.com)) menjadi antarmuka digital berkelas dunia mengusung standar **"Quiet Luxury Boutique Resort"** (Inspirasi dari **Aman Resorts** & **Kempinski Hotels**).
+**Vije Boutique Resort** adalah platform web hospitality & *Direct Booking Management System* yang dirancang khusus untuk membangun ulang dan meng-elevasi **Vije Boutique Resort** ([www.vijeboutiqueresort.com](https://www.vijeboutiqueresort.com)) menjadi antarmuka digital berkelas dunia mengusung standar **"Quiet Luxury Boutique Resort"** (Inspirasi dari **Aman Resorts** & **Kempinski Hotels**).
 
+- **Dokumen Referensi PRD:** `PRD — Vije Boutique Resort.pdf`
+- **Aturan Repositori & Agen:** [.agents/AGENTS.md](file:///.agents/AGENTS.md) / [.cursorrules](file:///.cursorrules)
 - **Target Repository:** `git@github.com:hasanarofid/sistem-hotel.git`
 - **Developer & Owner:** [@hasanarofid.site](https://hasanarofid.site) | WhatsApp: [Wa.me/628814959247](https://Wa.me/628814959247)
 
@@ -16,6 +18,16 @@ Redesign website Vije Boutique Resort berfokus pada transformasi visual & UX tan
 
 ---
 
+## 🔒 Aturan Bisnis & Keamanan Utama (PRD Enforced Rules)
+
+1. **Server-Side Calculations Only:** Kalkulasi ketersediaan, tarif kamar, diskon, service charge, dan pajak dilakukan secara atomic di server.
+2. **Double Booking Prevention:** Transaksi pemesanan menggunakan database transactions & atomic locks (`lockForUpdate()`).
+3. **Payment Abstraction & Webhook Security:** Abstraksi `PaymentGatewayInterface` (Midtrans & Xendit) dengan verifikasi tanda tangan webhook & penanganan *idempotent*.
+4. **Role-Based Access Control (RBAC):** Hak akses terisolasi untuk `Super Admin`, `Admin`, `Reservation Staff`, `Finance`, dan `Content Manager`.
+5. **Audit Logging:** Setiap aksi perubahan reservasi, harga, dan alokasi kamar tercatat lengkap di Audit Log.
+
+---
+
 ## 🎨 Color Palette & Typography
 
 ### Palet Warna Natural & Luxury
@@ -26,31 +38,33 @@ Redesign website Vije Boutique Resort berfokus pada transformasi visual & UX tan
 
 ### Tipografi Editorial
 - **Heading / Display:** *Cormorant Garamond* / *Playfair Display* / *Cinzel* (Serif Mewah & Spacious).
-- **Body Text:** *Plus Jakarta Sans* / *Inter* / *Manrope* (Sans-Serif Bersih & Highly Readable).
+- **Body Text:** *Plus Jakarta Sans* / *Inter* / *Manrope* (San-Serif Bersih & Highly Readable).
 
 ---
 
-## 🏛️ Blueprint Struktur Homepage
+## 🏛️ Modul & Modul Sistem PRD
 
-1. **Full-screen Hero:** Immersive resort photography/video, minimal navigation, tagline *"Where Luxury Meets Serenity"*, dan smooth fade/zoom animations.
-2. **Editorial Introduction:** *"An intimate retreat designed for those who appreciate the beauty of slow living"*.
-3. **Rooms & Villas Showcase:** Editorial layout (1 featured accommodation + supporting units) lengkap dengan spesifikasi luas ($m^2$), amenitas, dan CTA "Explore".
-4. **Experience & Wellness:** Menjual pengalaman menginap (Private dining, Spa treatment, Infinity pool, Cultural tours).
-5. **Luxury Dining Showcase:** Visual atmosphere restoran, signature dishes, dan private dining options.
-6. **Editorial Gallery:** Layout masonry/magazine grid resolusi tinggi.
-7. **Location & Storytelling:** Peta interaktif & narasi lokasi eksklusif resort.
-8. **Minimalist Testimonials:** Large quotation typography dari tamu.
-9. **Conversion Booking CTA:** Full-width background *"Your Private Escape Awaits"* + *"Book Your Stay"*.
-10. **Luxury Minimalist Footer:** Navigasi elegan, informasi kontak, dan legal links.
+1. **Public Website & Editorial Landing Page**
+2. **Room & Accommodation Showcase**
+3. **Direct Online Booking Engine**
+4. **Guest & CRM Management**
+5. **Booking Management & Calendar**
+6. **Payment Management & Gateway Abstraction**
+7. **Admin Dashboard & CMS**
+8. **Gallery & Facility Management**
+9. **Promo & Discount Engine**
+10. **Financial Reporting & Audit Log**
+11. **RBAC & User Access Management**
+12. **WhatsApp & Email Automated E-Voucher Notification System**
 
 ---
 
 ## ⚡ Teknologi & Performa
 
-- **Backend Engine:** Laravel 11 (PHP 8.2+).
-- **Frontend Stack:** Vue 3 (Inertia.js), Tailwind CSS, Framer Motion / Subtle CSS Transitions, `@lucide/vue`.
-- **Payment & WA Engine:** Midtrans / Xendit Payment Gateway & Automated WhatsApp E-Voucher Engine.
-- **Optimasi Performa:** Format WebP/AVIF, Lazy Loading, LCP Hero Optimization, Core Web Vitals tinggi.
+- **Backend Engine:** Laravel 11 (PHP 8.2+ REST API / Inertia).
+- **Frontend Stack:** Next.js / Vue 3 (Inertia.js), Tailwind CSS, Framer Motion, `@lucide/vue`.
+- **Database & Cache:** PostgreSQL / MySQL, Redis Cache & Queue.
+- **Payment & WA Engine:** Midtrans / Xendit Payment Gateway Abstraction & Automated WhatsApp E-Voucher Engine.
 
 ---
 
@@ -62,7 +76,7 @@ npm run build
 
 # Commit dan Push ke Repository
 git add .
-git commit -m "feat/redesign: implement luxury boutique resort prompt & system rules"
+git commit -m "feat/redesign: implement PRD rules, RBAC & Quiet Luxury guidelines"
 git push origin master
 ```
 
