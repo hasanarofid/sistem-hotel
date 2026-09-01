@@ -4,27 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\TokenLog;
-use App\Models\Rpp;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of users with token count, RPP count, and role management.
+     * Display a listing of resort staff & users with RBAC role management.
      */
     public function index(Request $request)
     {
         $search = $request->query('search');
 
-        $query = User::with('roles')
-            ->withCount('rpps')
-            ->with(['tokenLogs' => function ($q) {
-                $q->latest()->take(10);
-            }, 'rpps' => function ($q) {
-                $q->latest()->take(10);
-            }]);
+        $query = User::with('roles');
 
         if ($search) {
             $query->where(function ($q) use ($search) {
@@ -35,9 +28,11 @@ class UserController extends Controller
         }
 
         $users = $query->latest()->paginate(10)->withQueryString();
+        $availableRoles = Role::pluck('name')->toArray();
 
         return Inertia::render('Admin/Users/Index', [
             'users' => $users,
+            'available_roles' => $availableRoles,
             'filters' => [
                 'search' => $search,
             ]
@@ -45,62 +40,16 @@ class UserController extends Controller
     }
 
     /**
-     * Get detailed history of token usage and RPPs created for a user.
-     */
-    public function history(User $user)
-    {
-        $user->load(['roles', 'tokenLogs' => function ($q) {
-            $q->with('rpp')->latest();
-        }, 'rpps' => function ($q) {
-            $q->latest();
-        }, 'tokenTransactions' => function ($q) {
-            $q->with('package')->latest();
-        }]);
-
-        return response()->json([
-            'user' => $user,
-            'token_logs' => $user->tokenLogs,
-            'rpps' => $user->rpps,
-            'transactions' => $user->tokenTransactions,
-        ]);
-    }
-
-    /**
-     * Top-up tokens manually for a user (Admin feature).
-     */
-    public function topupTokens(Request $request, User $user)
-    {
-        $request->validate([
-            'tokens' => 'required|integer|min:1',
-            'reason' => 'nullable|string|max:255',
-        ]);
-
-        $amount = (int) $request->tokens;
-        $user->increment('tokens', $amount);
-
-        TokenLog::create([
-            'user_id' => $user->id,
-            'rpp_id' => null,
-            'type' => 'admin_topup',
-            'tokens' => $amount,
-            'balance_after' => $user->fresh()->tokens,
-            'description' => 'Top-up manual oleh Admin (' . ($request->reason ?: 'Bonus/Topup') . ')',
-        ]);
-
-        return redirect()->back()->with('success', "Berhasil menambahkan {$amount} token ke akun {$user->name}.");
-    }
-
-    /**
-     * Change user role between admin and user.
+     * Update user RBAC role.
      */
     public function updateRole(Request $request, User $user)
     {
         $request->validate([
-            'role' => 'required|string|in:admin,user',
+            'role' => 'required|string|in:super_admin,admin,reservation_staff,finance,content_manager,user,client',
         ]);
 
         $user->syncRoles([$request->role]);
 
-        return redirect()->back()->with('success', "Role user {$user->name} telah diubah menjadi {$request->role}.");
+        return redirect()->back()->with('success', "Peran akses user {$user->name} berhasil diperbarui menjadi {$request->role}.");
     }
 }
