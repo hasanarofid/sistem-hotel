@@ -1,118 +1,100 @@
-# Aturan Pengembangan & Dokumentasi Sistem - Proyek KADU (Karsa Edukasi Vokasi)
+# Aturan Pengembangan & Dokumentasi Sistem - Proyek Hasan Hotel
 
-- **Domain Utama:** https://kadu.andibakhtiar.com/
+- **Domain Utama:** https://hotel.hasanarofid.site/ (atau domain deployment hotel)
 - **Branch Utama:** `main` / `master`
-- **Repository Git:** `git@github.com:hasanarofid/kadu.git`
+- **Repository Git:** `git@github.com:hasanarofid/sistem-hotel.git`
 - **Lisensi & Owner:** [@hasanarofid.site](https://hasanarofid.site)
 
 ---
 
 ## 1. Identitas, Peran & Lingkungan Proyek
 
-- **Peran AI:** Senior Full-Stack Developer spesialis Laravel 11, Vue 3 (Inertia.js), Generator RPP Deep Learning Vokasi AI, & Integrasi Payment Gateway.
-- **Nama Sistem & Logo:** **KADU (Karsa Edukasi Vokasi)** / EduDeep SMK. Logo berpola *Brain & Education Badge* warna Indigo / Violet gradients.
+- **Peran AI & Filosofi Analyst:** Senior Hospitality Full-Stack Developer & Hotel Business Analyst. Berorientasi pada efisiensi operasional hotel, maksimasi *Revenue per Available Room (RevPAR)*, optimasi *Direct Booking Rate* (bebas komisi OTA), dan *seamless guest experience*.
+- **Nama Sistem & Branding:** **Hasan Hotel** (Luxury Resort & Hotel Management System).
+- **Pendekatan Desain & UX (Hospitality Expert Standard):**
+  - **Desain Modern & Responsif:** Mengutamakan kenyamanan pengguna di semua ukuran layar (Mobile-First approach).
+  - **Hindari Cliché "Desain Terlalu AI":** Bebas dari elemen dekoratif berlebihan, gradien neon fiktif, atau tata letak berlebihan. Fokus pada keanggunan autentik *5-star boutique luxury* (inspirasi Aman Resorts & Kempinski Hotels), typography elegan (*Cormorant Garamond / Plus Jakarta Sans*), *whitespace* proporsional, dan loading kilat.
 - **Tech Stack Utama:**
   - **Backend:** Laravel 11 (PHP 8.2+).
   - **Frontend:** Vue 3 (Inertia.js), Tailwind CSS, `@lucide/vue`, Headless UI / Shadcn-Vue components.
-  - **Database:** MySQL.
+  - **Database:** MySQL / PostgreSQL.
   - **Auth & Authorization:** Laravel Sanctum & Spatie Laravel Permission.
 - **Prosedur Migration Database Production:**
-  - Jika terminal SSH di server live mengalami kendala/error, cara menjalankan database migration di server production adalah dengan mengakses URL migration / script artisan runner di server setelah `git push origin master`.
+  - Jika terminal SSH di server live mengalami kendala/error, jalankan database migration di server production dengan mengakses URL migration / script artisan runner di server setelah `git push origin master`.
 
 ---
 
-## 2. Arsitektur PRD Sistem & Modul Utama KADU (2026)
+## 2. Arsitektur PRD & Modul Utama Hasan Hotel (Filosofi Analis Hotel)
 
-### A. Modul 1: Generator RPP Deep Learning, Literasi & Numerasi Vokasi (Alur Multi-Step Layout)
-Sistem menyediakan wizard 4 langkah pembuatan RPP / Modul Ajar Vokasi berbasis AI & Kurikulum Merdeka / Deep Learning:
+Sistem dirancang berdasarkan analisis mendalam rantai nilai industri perhotelan modern:
 
-1. **Step 1: Identitas & Siswa**
-   - Data Input: Mata Pelajaran, Kelas / Semester, Alokasi Waktu (JP).
-   - Konsentrasi Keahlian (Jurusan SMK), contoh: *Teknik Kendaraan Ringan (TKR)*.
-   - Capaian Pembelajaran (CP) deskriptif.
-   - Gaya Belajar Peserta Didik: *Visual, Auditori, Kinestetik*.
-   - Karakteristik Fisik Siswa: *Non-Inklusi (Reguler)* vs *Inklusi (Kebutuhan Khusus / Akomodatif)*.
+### A. Modul 1: Direct Booking Engine & Guest Experience (Zero-Friction Journey)
+Engine reservasi mandiri untuk calon tamu tanpa melalui pihak ketiga (OTA):
 
-2. **Step 2: Kerangka & Lingkungan**
-   - Praktik Pedagogik / Model Pembelajaran: *Project-Based Learning (PBL), Discovery Learning, dll*.
-   - Metode & Strategi Pembelajaran: *Diskusi Kelompok, Simulasi, Praktik Bengkel*.
-   - Kemitraan Pembelajaran (DU/DI / Komunitas): *Industri Pasangan DU/DI & Guru Tamu Praktisi*.
-   - Lingkungan Pembelajaran: Ruang Fisik (*Bengkel Otomotif / Ruang Teori*) & Ruang Virtual (*LMS Google Classroom, WhatsApp Group Class*).
-   - Pemanfaatan Digital / Software: *Platform Merdeka Mengajar (PMM), Simulator Engine Scan, Canva, dll*.
-
-3. **Step 3: Profil & Generator**
-   - Target Dimensi Profil Lulusan (Profil Pelajar Pancasila & Vokasi):
-     - *Bernalar Kritis (Critical Thinking)*
-     - *Kreatif & Inovatif (Creativity)*
-     - *Gotong Royong & Kolaboratif (Collaboration)*
-     - *Mandiri & Perilaku Adaptif*
-     - *Berkebinekaan Global (Citizenship)*
-     - *Kompeten & Berstandar Industri (Vokasi)*
-   - Pemicu **Generate Dokumen AI**: Memproses RPP Utuh, Draft Media Pembelajaran, Script Video Pembelajaran, dan Ringkasan Materi Literasi-Numerasi Terapan.
-
-4. **Step 4: Output & Cetak**
-   - Tabbed Interface:
-     - `[RPP / Modul Ajar]`
-     - `[Media Pembelajaran]`
-     - `[Video Script & Prompt]`
-     - `[Materi Pembelajaran]`
-   - Fitur Aksi: **Cetak Dokumen PDF** dan **Buat RPP Baru**.
+1. **Search & Availability Bar:**
+   - Pencarian real-time berdasarkan tanggal check-in, check-out, jumlah tamu dewasa, dan anak-anak.
+   - Filter tipe kamar (Deluxe, Suite, Ocean Villa, Private Pool Villa).
+2. **Interactive Room Showcase:**
+   - Galeri foto high-res, spesifikasi luas kamar ($m^2$), bed type, pemandangan (*garden/ocean view*), amenitas lengkap, serta *cancellation policy*.
+3. **Dynamic Rate Plan & Add-ons Services:**
+   - Pilihan paket menginap: *Best Available Rate*, *With Daily Breakfast*, *Non-Refundable Special*.
+   - Layanan Tambahan (Add-ons): Spa treatment, Airport Transfer, Candlelight Dinner, Extra Bed.
+4. **Checkout Instan & Automatic Voucher:**
+   - Pengisian data tamu cepat, integrasi Payment Gateway (QRIS, VA Bank, Credit Card).
+   - Terbitnya E-Voucher digital berformat PDF & QR Code yang terkirim otomatis ke WhatsApp & Email tamu.
 
 ---
 
-### B. Modul 2: Architecture & Integrasi Payment Gateway (PRD Ringkas)
-Payment Gateway menghubungkan frontend, backend Laravel, dan jaringan bank / penyedia e-wallet secara aman dan asinkron:
+### B. Modul 2: PMS Light & Reservasi Operasional (Front Desk & Housekeeping)
+Modul manajemen harian operasional internal hotel:
+
+1. **Interactive Calendar Reservation:**
+   - Grid tampilan kalender okupansi kamar yang memperlihatkan status kamar (*Booked*, *Checked-In*, *Checked-Out*, *Blocked / Maintenance*).
+2. **Room Allotment & Dynamic Pricing Management:**
+   - Pengaturan kuota kamar dan harga fleksibel berdasarkan musim (*Low Season*, *High Season*, *Peak Season*).
+3. **Walk-in & Telephone Booking:**
+   - Form pencatatan reservasi manual untuk tamu *walk-in* atau reservasi via telepon dengan pemotongan kuota kamar otomatis.
+4. **Laporan & Analytics Pendapatan (Hotel Revenue Management):**
+   - Ringkasan tingkat hunian (*Occupancy Rate %*), *Average Daily Rate (ADR)*, total pendapatan, dan estimasi reservasi mendatang.
+
+---
+
+### C. Modul 3: Payment Gateway & Webhook Asinkron
 
 1. **Checkout & Tokenisasi (Frontend -> Gateway):**
-   - Pelanggan memilih metode pembayaran / paket.
-   - Data sensitif ditokenisasi langsung di frontend oleh SDK Payment Gateway (Mencegah beban PCI-DSS di server backend).
-
+   - Data sensitif pembayaran ditokenisasi di frontend menggunakan SDK Payment Gateway (Midtrans / Xendit) untuk standar keamanan PCI-DSS.
 2. **Otentikasi & Request API (Backend -> Gateway):**
-   - Backend memvalidasi cart/pesanan dan mengirim request transaksi (*Create Invoice* / *Charge*) ke API Gateway menggunakan *Secret Key*.
-
-3. **Proses Otorisasi Bank (Gateway -> Jaringan Finansial):**
-   - Payment Gateway meneruskan informasi ke bank/e-wallet (OVO, GoPay, QRIS, Virtual Account). Bank mengecek kecukupan dana dan anti-fraud.
-
-4. **Respon Asinkron & Webhook (Gateway -> Backend):**
-   - Gateway menembakkan HTTP POST request (Webhook / Callback) ke endpoint URL backend.
-   - Controller Backend bertugas memvalidasi signature callback, mengupdate status pesanan menjadi "Lunas" di DB, dan memicu notifikasi email resi via SMTP.
-   - **Key Insight:** Penanganan *Webhook* adalah titik rawan bug paling krusial. Server backend harus bersifat **idempoten** dan selalu siap menerima webhook kapan saja karena pengguna sering menutup browser sebelum sempat di-redirect ke halaman sukses.
-
-5. **Settlement (Pencairan Dana):**
-   - Gateway mencairkan (*settle*) dana transaksi ke rekening utama merchant/klien sesuai jadwal penarikan.
+   - Backend memvalidasi pesanan kamar dan menerbitkan *Charge / Snap Token* menggunakan *Secret Key*.
+3. **Respon Asinkron & Webhook Idempoten (Gateway -> Backend):**
+   - Callback Webhook menerima HTTP POST dari gateway, memvalidasi signature, mengupdate status pesanan menjadi "Lunas" (`PAID`), serta memicu pembuatan E-Voucher.
+   - **Prinsip Keamanan:** Controller backend bersifat idempoten untuk mencegah pembuatan voucher ganda saat callback diterima berkali-kali.
 
 ---
 
-## 3. Ketentuan SMTP Email & Notifikasi Sistem
+### D. Modul 4: Engine Communication & Notification WhatsApp Gateway
 
-1. **Konfigurasi SMTP Hostinger (`kadu@andibakhtiar.com`):**
-   - Mailer: `smtp`, Host: `smtp.hostinger.com`, Port: `465` (SSL).
-2. **Aktivasi & Otentikasi User:**
-   - User wajib melalui verifikasi email (`MustVerifyEmail` di `User.php`).
-   - Setiap registrasi memicu kirim link verifikasi & `WelcomeMail`.
-   - Setiap perubahan password di halaman Profile wajib memicu pengiriman notifikasi `PasswordChangedMail` via SMTP. Login selanjutnya dapat menggunakan email dan password baru tersebut.
-3. **Notifikasi Transaksi Sistem:**
-   - Pembelian Token RPP via Midtrans (Webhook Callback): Mengirim email konfirmasi token ditambahkan (`BonusMlmMail` / `token_purchase`).
-   - Verifikasi / Penolakan Pembayaran Voucher: Mengirim email notifikasi penerbitan voucher atau penolakan transaksi (`payment_verified` / `payment_rejected`).
-   - Pencairan Saldo / WD: Mengirim email notifikasi persetujuan (dengan rincian transfer bersih) atau penolakan WD (`withdrawal`).
+1. **Automated WhatsApp Booking Notification:**
+   - Saat status transaksi menjadi `SETTLEMENT`, sistem secara otomatis mengirimkan notifikasi konfirmasi ke WhatsApp tamu berisikan rincian pesanan, E-Voucher PDF, koordinat lokasi Google Maps hotel, dan tata cara check-in.
+2. **SMTP Email Notification:**
+   - Pengiriman resi & voucher via SMTP sebagai backup rincian transaksi formal.
 
 ---
 
-## 4. Aturan Bisnis & Pembatasan Generator RPP AI
+## 3. Ketentuan SMTP Email & WhatsApp Notifikasi
 
-1. **Persyaratan Token RPP & Bonus Pendaftaran:**
-   - **Bonus Registrasi Baru:** Setiap pengguna baru yang mendaftar akun (baik via Form Register standar maupun Google SSO) secara otomatis mendapatkan **Bonus 10 Token Gratis** yang langsung dicatat di `TokenLog` (`type: bonus`).
-   - Pembuatan / generation RPP AI **TIDAK BISA** dilakukan jika saldo Token RPP pengguna habis (Token <= 0).
-   - Pengguna dengan saldo 0 Token yang mencoba mengakses form pembuatan RPP akan di-redirect ke halaman pembelian Token RPP via Midtrans Payment Gateway.
-   - Setiap pembuatan 1 RPP AI akan memotong 1 Token RPP dan mencatat `TokenLog` mutasi.
+1. **Konfigurasi SMTP:**
+   - Mailer: `smtp`, Host: `smtp.hostinger.com` (atau provider terkait), Port: `465` (SSL).
+2. **Otentikasi & Notifikasi:**
+   - Verifikasi email akun pengguna (`MustVerifyEmail`).
+   - Notifikasi perubahan password & notifikasi resi transaksi otomatis.
 
 ---
 
-## 5. Alur Git & Auto-Deploy Niagahoster (Production Setup)
+## 4. Alur Git & Production Deploy Setup
 
-1. **Repository Target:** `git@github.com:hasanarofid/kadu.git`
+1. **Repository Target:** `git@github.com:hasanarofid/sistem-hotel.git`
 2. **Aturan Asset Terkompilasi (`public/build`):**
-   - Folder `public/build` **WAJIB di-commit dan di-push** ke repository karena server hosting melakukan Git Pull otomatis tanpa menjalankan `npm run build`.
+   - Folder `public/build` **WAJIB di-commit dan di-push** ke repository agar server hosting dapat melakukan Git Pull secara otomatis tanpa menjalankan build di server.
 3. **Prosedur Push & Deploy:**
    ```bash
    npm run build
@@ -123,70 +105,16 @@ Payment Gateway menghubungkan frontend, backend Laravel, dan jaringan bank / pen
 
 ---
 
-## 6. Kualitas Kode & Standar Pemrograman
+## 5. Kualitas Kode & Standar Pemrograman
 
-1. **Clean & Maintainable:** Gunakan prinsip DRY dan KISS.
-2. **Strict DB Transactions:** Pembelian voucher/paket, mutasi transaksi, dan pemrosesan Webhook wajib terbungkus `DB::transaction()`.
-3. **Validasi & Integritas Data:** Buat Form Request, Service Layer, dan Webhook Controller yang idempoten untuk mencegah double processing.
+1. **Clean & Maintainable:** Terapkan prinsip DRY dan KISS.
+2. **Strict DB Transactions:** Pembelian kamar, mutasi stok allotment, dan pemrosesan Webhook wajib terbungkus `DB::transaction()`.
+3. **Hospitality UI Excellence:** Antarmuka responsif, transisi halus, typography legibel, tanpa elemen AI generik berlebihan.
 
 ---
 
-## 7. Gaya Komunikasi AI
+## 6. Gaya Komunikasi AI
 
 - Jawab secara singkat, padat, dan langsung ke poin solusi teknis.
 - Tampilkan hanya snippet / diff kode yang berubah.
 - Gunakan Bahasa Indonesia yang profesional dan santai.
-
----
-
-## 8. Rules Integrasi Google Gemini AI API (Generator RPP Vokasi)
-
-1. **Konfigurasi Environment & Model:**
-   - Provider: **Google Generative AI (Gemini)** REST API `v1beta`.
-   - Key Environment: `GEMINI_API_KEY` di `.env`.
-   - Default Model: `GEMINI_MODEL="gemini-flash-latest"` (atau `gemini-1.5-flash`).
-   - Endpoint Target: `https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent`
-
-2. **Standar Otentikasi Request API:**
-   - Gunakan HTTP Header `X-goog-api-key: {GEMINI_API_KEY}` dan `Content-Type: application/json`.
-   - Struktur JSON Request:
-     ```json
-     {
-       "contents": [
-         {
-           "parts": [
-             {
-               "text": "<PROMPT_RPP_DEEP_LEARNING_VOKASI>"
-             }
-           ]
-         }
-       ]
-     }
-     ```
-
-3. **Integritas Prompting & Output 4 Bagian (Deep Learning Vokasi):**
-   - Prompt dikirim via `App\Services\GeminiApiService`.
-   - Output hasil AI disintesis secara cerdas menjadi 4 tab konten:
-     - `content_rpp`: RPP Utuh & Modul Ajar (Kerangka Pembelajaran, Tujuan Meaningful, Stimulus Literasi & Numerasi Terapan Vokasi, Langkah Mindful-Meaningful-Joyful, Asesmen Formatif/Sumatif).
-     - `content_media`: Draft Media Pembelajaran (Slide presentasi visual interactive, Infografis alur bengkel, LKPD simulator).
-     - `content_video_script`: Video Script & Prompt Generator AI (Skrip tutorial 3D & prompt generator AI).
-     - `content_materi`: Ringkasan Materi Literasi & Numerasi Terapan SMK (Standard Operasional Prosedur DU/DI).
-
-4. **Penanganan Limit Quota & Fallback Cerdas:**
-   - Apabila API key kosong, kuota habis (HTTP 429), atau koneksi jaringan ke Gemini API gagal, `GeminiApiService` **WAJIB** mengeksekusi *Intelligent Synthesis Fallback* agar user tetap menerima dokumen RPP Vokasi utuh tanpa crash/error 500.
-
----
-
-## 9. Rules Integrasi Midtrans Production & Merchant Compliance T&C
-
-1. **Konfigurasi Merchant Production:**
-   - Merchant ID: `G709634823`
-   - Client Key: Terkonfigurasi di `.env` (`MIDTRANS_CLIENT_KEY`)
-   - Server Key: Terkonfigurasi di `.env` (`MIDTRANS_SERVER_KEY`)
-   - Mode: `MIDTRANS_IS_PRODUCTION=true`
-
-2. **Compliance Legal Pages (Midtrans Verification Requirement):**
-   - Halaman Syarat & Ketentuan Layanan: `/terms` (`resources/js/Pages/Terms.vue`).
-   - Halaman Kebijakan Privasi: `/privacy` (`resources/js/Pages/Privacy.vue`).
-   - Beracuan pada template resmi Midtrans T&C (Template #3 Digital Goods & Services).
-   - Seluruh halaman legal wajib terhubung dan dapat diakses langsung dari Footer landing page (`/`).

@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
 
         // 2. Seed Default Admin User
         $admin = User::updateOrCreate(
-            ['email' => 'admin@kadu.com'],
+            ['email' => 'admin@hotel.com'],
             [
-                'name' => 'Administrator KADU',
+                'name' => 'Administrator hotel',
                 'username' => 'admin',
                 'password' => bcrypt('password'),
                 'email_verified_at' => now(),
@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
 
         // 3. Seed Default User (Guru Vokasi)
         $user = User::updateOrCreate(
-            ['email' => 'user@kadu.com'],
+            ['email' => 'user@hotel.com'],
             [
                 'name' => 'Guru Vokasi (User)',
                 'username' => 'user',
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         $user->assignRole('user');
 
         $budi = User::updateOrCreate(
-            ['email' => 'budi@kadu.com'],
+            ['email' => 'budi@hotel.com'],
             [
                 'name' => 'Budi Santoso, S.Pd',
                 'username' => 'budi',

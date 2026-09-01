@@ -1,81 +1,53 @@
-# KADU - Karsa Edukasi Vokasi (EduDeep SMK)
+# Hasan Hotel — Luxury Resort & Direct Booking System
 
-![KADU Logo](public/favicon.ico)
+**Hasan Hotel** adalah platform aplikasi berbasis web untuk **Sistem Manajemen Hotel & Direct Booking Engine** yang dirancang dengan sudut pandang *Hospitality Revenue & Operations Analyst*. Sistem ini dibangun untuk memaksimalkan angka *Direct Booking* (bebas komisi pihak ketiga/OTA), mempercepat alur transaksi reservasi tamu, serta mengotomatisasi operasional resort/hotel menggunakan arsitektur modern berbasis **Laravel 11**, **Vue 3 (Inertia.js)**, **Tailwind CSS**, dan **MySQL**.
 
-**KADU (Karsa Edukasi Vokasi)** adalah platform aplikasi berbasis web untuk pembuatan **RPP Deep Learning, Literasi & Numerasi Vokasi SMK** secara otomatis menggunakan AI, dilengkapi dengan sistem integrasi **Payment Gateway** dan arsitektur modern berbasis **Laravel 11**, **Vue 3 (Inertia.js)**, **Tailwind CSS**, dan **MySQL**.
-
-- **Official Live Website:** [https://kadu.andibakhtiar.com/](https://kadu.andibakhtiar.com/)
-- **Repository Git:** `git@github.com:hasanarofid/kadu.git`
-- **Owner & Developer:** [@hasanarofid.site](https://hasanarofid.site)
+- **Repository Git Target:** `git@github.com:hasanarofid/sistem-hotel.git`
+- **Developer & Owner:** [@hasanarofid.site](https://hasanarofid.site) | WhatsApp: [Wa.me/628814959247](https://Wa.me/628814959247)
 
 ---
 
-## 🚀 Fitur Utama & Layout Workflow (EduDeep SMK)
+## 🏛️ Filosofi Analis Hotel & Konsep Desain UI/UX
 
-Sistem **KADU** menyediakan alur kerja 4-langkah (Multi-Step Form Wizard) yang interaktif dan intuitif:
-
-```
-[1. IDENTITAS & SISWA] ➔ [2. KERANGKA & LINGKUNGAN] ➔ [3. PROFIL & GENERATOR] ➔ [4. OUTPUT & CETAK]
-```
-
-### 1. Identitas, Konteks & Karakteristik Peserta Didik
-- **Mata Pelajaran, Kelas / Semester, & Alokasi Waktu (JP)**
-- **Konsentrasi Keahlian (Jurusan SMK):** Contoh: *Teknik Kendaraan Ringan (TKR)*
-- **Capaian Pembelajaran (CP)**
-- **Gaya Belajar Peserta Didik:** Visual, Auditori, Kinestetik
-- **Karakteristik Fisik Siswa:** Non-Inklusi (Reguler) / Inklusi (Kebutuhan Khusus)
-
-### 2. Kerangka Pembelajaran, Kemitraan & Lingkungan
-- **Praktik Pedagogik (Model Pembelajaran):** Project-Based Learning (PBL), dsb.
-- **Metode & Strategi Pembelajaran:** Diskusi Kelompok, Simulasi, Praktik Bengkel.
-- **Kemitraan Pembelajaran (DU/DI / Komunitas):** Industri Pasangan DU/DI & Guru Tamu Praktisi.
-- **Lingkungan Pembelajaran:** Ruang Fisik (Bengkel / Teori) & Ruang Virtual (LMS Google Classroom, WhatsApp Group).
-- **Pemanfaatan Digital / Software:** Platform Merdeka Mengajar (PMM), Simulator Engine Scan, Canva.
-
-### 3. Target Dimensi Profil Lulusan & Generasi AI
-- **Dimensi Profil Lulusan (Profil Pelajar Pancasila & Vokasi):**
-  - Bernalar Kritis *(Critical Thinking)*
-  - Kreatif & Inovatif *(Creativity)*
-  - Gotong Royong & Kolaboratif *(Collaboration)*
-  - Mandiri & Perilaku Adaptif
-  - Berkebinekaan Global *(Citizenship)*
-  - Kompeten & Berstandar Industri *(Vokasi)*
-- **Generator Dokumen AI:** Memproses seluruh masukan menjadi dokumen pembelajaran utuh.
-
-### 4. Output & Cetak PDF
-- **Multi-Tab Preview:**
-  - 📄 RPP / Modul Ajar
-  - 🖼️ Media Pembelajaran
-  - 🎬 Video Script & Prompt
-  - 📚 Materi Pembelajaran
-- **Export & Action:** Cetak Dokumen PDF & Reset/Buat RPP Baru.
+Sistem **Hasan Hotel** mengadopsi standar visual *5-star luxury boutique resort* (inspirasi dari **Aman Resorts & Kempinski Hotels**):
+- **Desain Modern & Responsif:** Tampilan adaptif sempurna di layar perangkat smartphone, tablet, dan desktop.
+- **Bebas Cliché Visual AI:** Menghindari elemen dekoratif berlebihan atau gradien berisik. Fokus pada keanggunan autentik, tipografi premium (*Cormorant Garamond / Plus Jakarta Sans*), *whitespace* seimbang, dan gambar resolusi tinggi.
+- **Zero-Friction Guest Journey:** Meminimalisir langkah pemesanan kamar agar tamu dapat menyelesaikan transaksi dalam hitungan detik.
 
 ---
 
-## 💳 Arsitektur Integrasi Payment Gateway
+## 🚀 Fitur Utama Sistem
 
-*Payment Gateway* bertindak sebagai jembatan yang mengamankan data transaksi dari aplikasi ke jaringan bank / e-wallet.
+### 1. Direct Booking Engine (Alur Pemesanan Tamu)
+- 🔍 **Filter Pencarian Real-time:** Check-in, Check-out, & Jumlah Tamu.
+- 🛏️ **Room & Villa Showcase:** Galeri foto interaktif, amenitas kamar, bed type, & kebijakan pembatalan.
+- 🏷️ **Dynamic Rate Plan:** Pilihan *Best Available Rate*, *With Breakfast*, atau paket diskon promosi.
+- 🍷 **Layanan Add-ons:** Spa Treatment, Airport Transfer, Candlelight Dinner, & Extra Bed.
+- 📱 **WhatsApp Instant E-Voucher:** Pengiriman tiket/voucher digital otomatis berformat PDF & QR Code ke WhatsApp tamu saat pembayaran berhasil.
+
+### 2. PMS Light & Control Panel Operasional (Admin Hotel)
+- 📅 **Interactive Reservation Calendar:** Visualisasi status kamar (*Booked*, *Checked-In*, *Checked-Out*, *Maintenance*).
+- 💰 **Dynamic Pricing & Allotment:** Kemudahan mengubah harga kamar berdasarkan musim (*Peak/High/Low Season*) dan mengunci kuota kamar.
+- 📝 **Manual Reservation Input:** Fitur entri cepat untuk reservasi *walk-in* atau via telepon.
+- 📊 **Revenue & Occupancy Analytics:** Laporan tingkat hunian (*Occupancy Rate %*), *Average Daily Rate (ADR)*, dan proyeksi pendapatan.
+
+### 3. Payment Gateway & Webhook Asinkron
+- 💳 **Metode Pembayaran Lengkap:** QRIS, Virtual Account Bank (BCA, Mandiri, BRI, BNI), Credit Card, dan E-Wallet via Midtrans / Xendit.
+- 🔒 **Webhook Security Idempotent:** Pemrosesan callback aman dari ganda transaksi dan otomatis memperbarui status DB secara *real-time*.
+
+---
+
+## 💳 Arsitektur Integrasi Payment Gateway & WhatsApp Engine
 
 ```
-[ Frontend ] ──(1. Tokenisasi)──> [ Payment Gateway ]
-     │                                    │
-(2. Charge/Invoice)              (3. Otorisasi Finansial)
-     ▼                                    ▼
-[ Backend ]  <──(4. Webhook Callback)── [ Bank / E-Wallet ]
+[ Tamu (Frontend Vue/Inertia) ] ──(1. Tokenisasi)──> [ Payment Gateway (Midtrans) ]
+               │                                                  │
+   (2. Charge Transaction)                               (3. Otorisasi Finansial)
+               ▼                                                  ▼
+[ Backend (Laravel 11 Engine) ]  <──(4. Webhook Callback)── [ Bank / E-Wallet ]
+               │
+               └──(5. Trigger Notifikasi)──> [ WhatsApp Engine Gateway ] ──> [ WA Tamu (PDF Voucher) ]
 ```
-
-### Urutan Teknis Integrasi:
-1. **Checkout & Tokenisasi (Frontend ke Gateway):**
-   - Data sensitif ditokenisasi di frontend oleh SDK Payment Gateway untuk keamanan PCI-DSS.
-2. **Otentikasi & Request API (Backend ke Gateway):**
-   - Backend memvalidasi cart dan membuat transaksi via API menggunakan *Secret Key*.
-3. **Proses Otorisasi Bank (Gateway ke Jaringan Finansial):**
-   - Payment Gateway meneruskan informasi ke bank/e-wallet untuk pemeriksaan saldo dan anti-fraud.
-4. **Respon Asinkron & Webhook (Gateway ke Backend):**
-   - Gateway mengirimkan HTTP POST Callback/Webhook ke endpoint backend. Controller backend mengubah status pesanan di DB menjadi "Lunas" dan memicu notifikasi email resi.
-   > **Key Insight:** Penanganan *Webhook* adalah titik rawan *bug* paling krusial. Server backend dibuat idempoten untuk menangani respon asinkron kapan saja.
-5. **Settlement (Pencairan Dana):**
-   - Pencairan dana dari gateway ke rekening bank utama merchant/klien.
 
 ---
 
@@ -83,8 +55,8 @@ Sistem **KADU** menyediakan alur kerja 4-langkah (Multi-Step Form Wizard) yang i
 
 ### 1. Clone & Install Dependensi
 ```bash
-git clone git@github.com:hasanarofid/kadu.git
-cd kadu
+git clone git@github.com:hasanarofid/sistem-hotel.git
+cd sistem-hotel
 composer install
 npm install
 ```
@@ -108,22 +80,22 @@ php artisan serve
 
 ---
 
-## 🔄 Alur Git & Production Auto-Deploy (Niagahoster)
+## 🔄 Alur Git & Production Auto-Deploy
 
 1. Build frontend assets:
    ```bash
    npm run build
    ```
-2. Commit dan Push ke GitHub:
+2. Commit dan Push ke Repository Git Baru:
    ```bash
    git add .
-   git commit -m "feat: update fitur RPP & payment gateway"
-   git push origin master
+   git commit -m "feat: setup sistem-hotel direct booking engine & rules"
+   git remote set-url origin git@github.com:hasanarofid/sistem-hotel.git
+   git push -u origin master
    ```
-3. Webhook Niagahoster akan secara otomatis mengunduh (*git pull*) perubahan terbaru di server live: [https://kadu.andibakhtiar.com/](https://kadu.andibakhtiar.com/).
 
 ---
 
-## 👨‍💻 Owner & Tim Pengembang
-- **Owner / Developer:** [@hasanarofid.site](https://hasanarofid.site)
-- **Live URL:** [https://kadu.andibakhtiar.com/](https://kadu.andibakhtiar.com/)
+## 👨‍💻 Author & Hospitality Web Specialist
+- **Developer / Owner:** Hasan Arofid ([hasanarofid.site](https://hasanarofid.site))
+- **WhatsApp:** [http://Wa.me/628814959247](http://Wa.me/628814959247)
