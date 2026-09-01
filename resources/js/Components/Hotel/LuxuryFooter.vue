@@ -12,9 +12,7 @@ import { MapPin, Phone, Mail, Instagram, Facebook, Globe, MessageSquare } from '
         <!-- Brand & Slogan Column (5 Cols) -->
         <div class="lg:col-span-5 space-y-6">
           <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-full border border-luxury-gold/50 flex items-center justify-center bg-luxury-gold/10">
-              <span class="font-serif text-luxury-gold text-xl font-bold tracking-widest">V</span>
-            </div>
+            <img src="/images/vije-logo.webp" alt="Vije Boutique Resort" class="h-10 lg:h-12 w-auto object-contain" />
             <div class="flex flex-col">
               <span class="font-serif text-2xl font-light tracking-widest uppercase text-white">
                 Vije

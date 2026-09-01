@@ -16,9 +16,7 @@ import { Sparkles, BedDouble, ShieldCheck, CalendarCheck, Compass, ArrowLeft } f
       <div class="hidden lg:flex lg:col-span-7 relative p-12 lg:p-16 flex-col justify-between text-left">
         <!-- Brand Header -->
         <Link href="/" class="flex items-center gap-3 group z-10">
-          <div class="p-3 rounded-2xl bg-[#C5A059]/20 border border-[#C5A059]/40 text-[#C5A059] group-hover:scale-105 transition-all duration-300">
-            <Sparkles class="w-6 h-6" />
-          </div>
+          <img src="/images/vije-logo.webp" alt="Vije Boutique Resort" class="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
           <div class="flex flex-col">
             <span class="font-serif text-xl tracking-widest text-[#FAF8F5] uppercase">
               Vije Boutique

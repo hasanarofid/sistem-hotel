@@ -45,9 +45,12 @@ const logout = () => {
       <aside class="hidden lg:flex lg:flex-col w-72 bg-[#1C2826] text-[#FAF8F5] border-r border-[#2B3023] z-30 shrink-0">
         <!-- Brand Header -->
         <div class="p-6 border-b border-[#2B3023] flex items-center justify-between">
-          <Link :href="route('admin.dashboard')" class="flex flex-col">
-            <span class="font-serif text-lg tracking-widest text-[#FAF8F5] font-light uppercase">Vije Boutique</span>
-            <span class="text-[9px] tracking-[0.25em] text-[#C5A059] uppercase font-sans">Resort & Management</span>
+          <Link :href="route('admin.dashboard')" class="flex items-center gap-3">
+            <img src="/images/vije-logo.webp" alt="Vije Logo" class="h-9 w-auto object-contain shrink-0" />
+            <div class="flex flex-col">
+              <span class="font-serif text-base tracking-widest text-[#FAF8F5] font-light uppercase">Vije Boutique</span>
+              <span class="text-[8px] tracking-[0.25em] text-[#C5A059] uppercase font-sans">Resort & Management</span>
+            </div>
           </Link>
           <span class="inline-flex p-1.5 rounded-full bg-[#C5A059]/20 text-[#C5A059] text-xs">
             <Sparkles class="w-3.5 h-3.5" />

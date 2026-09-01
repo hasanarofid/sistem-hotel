@@ -49,14 +49,12 @@ const navLinks = [
       
       <!-- Brand Logo -->
       <a href="#" class="flex items-center space-x-3 group">
-        <div class="w-10 h-10 rounded-full border border-luxury-gold/40 flex items-center justify-center bg-luxury-gold/10 group-hover:border-luxury-gold transition-colors">
-          <span class="font-serif text-luxury-gold text-xl font-bold tracking-widest">V</span>
-        </div>
+        <img src="/images/vije-logo.webp" alt="Vije Boutique Resort" class="h-10 lg:h-12 w-auto object-contain transition-transform group-hover:scale-105" />
         <div class="flex flex-col">
-          <span class="font-serif text-2xl lg:text-3xl font-light tracking-widest uppercase transition-colors" :class="isScrolled ? 'text-luxury-charcoal' : 'text-white'">
+          <span class="font-serif text-xl lg:text-2xl font-light tracking-widest uppercase transition-colors" :class="isScrolled ? 'text-luxury-charcoal' : 'text-white'">
             Vije
           </span>
-          <span class="text-[9px] uppercase tracking-[0.3em] font-medium" :class="isScrolled ? 'text-luxury-gold' : 'text-luxury-sand'">
+          <span class="text-[8px] lg:text-[9px] uppercase tracking-[0.3em] font-medium" :class="isScrolled ? 'text-luxury-gold' : 'text-luxury-sand'">
             Boutique Resort
           </span>
         </div>
