@@ -8,78 +8,28 @@ import ExperienceShowcase from '@/Components/Hotel/ExperienceShowcase.vue';
 import DiningEditorial from '@/Components/Hotel/DiningEditorial.vue';
 import ImmersiveGallery from '@/Components/Hotel/ImmersiveGallery.vue';
 import LuxuryFooter from '@/Components/Hotel/LuxuryFooter.vue';
+import BookingConfirmationModal from '@/Components/Hotel/BookingConfirmationModal.vue';
 import { ArrowDown, Quote, MapPin, Compass, ShieldCheck, Sparkles, Phone, Mail } from 'lucide-vue-next';
 
 const props = defineProps({
   settings: Object,
+  rooms: {
+    type: Array,
+    default: () => [],
+  },
   navigation: Array
 });
 
 const pageData = usePage();
 const user = pageData.props.auth?.user;
 
-const villasList = [
-  {
-    id: 1,
-    name: 'Grand Ocean Pool Villa',
-    category: 'BEACHFRONT SANCTUARY',
-    badge: 'Signature Residence',
-    description: 'Perched along the serene coast, this grand sanctuary features a private infinity plunge pool, open-air pavilion, and panoramic Indian Ocean views framed by native teak architecture.',
-    size: '220 m²',
-    capacity: '2-3 Guests',
-    bed: 'Super King Bed',
-    price: 4500000,
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-    amenities: [
-      'Private Infinity Plunge Pool',
-      'Panoramic Ocean Sunset View',
-      'Personal Butler Service 24/7',
-      'Marble Bath & Outdoor Rain Shower',
-      'Gourmet Daily Breakfast Included',
-      'Complimentary High-Speed WiFi'
-    ]
-  },
-  {
-    id: 2,
-    name: 'Sanctuary Garden Suite',
-    category: 'BOTANICAL HIDEAWAY',
-    badge: 'Intimate Luxury',
-    description: 'Surrounded by fragrant frangipani trees and whispering lotus ponds, offering deep relaxation with a private outdoor terrazzo bathtub and expansive lounge veranda.',
-    size: '140 m²',
-    capacity: '2 Guests',
-    bed: 'King Bed',
-    price: 3200000,
-    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
-    amenities: [
-      'Private Tropical Garden Patio',
-      'Outdoor SunKEN Terrazzo Bathtub',
-      'Artisan Espresso & Organic Tea Bar',
-      'Handcrafted Teak Furniture',
-      'Evening Aromatherapy Turndown',
-      'Yoga Mat & Wellness Accessories'
-    ]
-  },
-  {
-    id: 3,
-    name: 'Royal Two-Bedroom Residence',
-    category: 'FAMILY & GROUP ESTATE',
-    badge: 'Ultimate Haven',
-    description: 'The pinnacle of boutique hospitality. Features two lavish master suites, an expansive 12-meter private swimming pool, and dedicated living and dining pavilions.',
-    size: '380 m²',
-    capacity: '4-5 Guests',
-    bed: '2 Super King Beds',
-    price: 7800000,
-    image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80',
-    amenities: [
-      '12-Meter Private Pool & Sun Deck',
-      'Two Independent Master Suites',
-      'Private Chef On Request',
-      'Roundtrip Airport Transfer Included',
-      'Spacious Open-Air Living Pavilion',
-      'Exclusive Sunset Cocktail Hour'
-    ]
-  }
-];
+const isConfirmationModalOpen = ref(false);
+const confirmedBooking = ref(null);
+
+const handleBookingSuccess = (bookingData) => {
+  confirmedBooking.value = bookingData;
+  isConfirmationModalOpen.value = true;
+};
 
 const testimonials = [
   {
@@ -155,118 +105,115 @@ const testimonials = [
       </div>
     </section>
 
-    <!-- Floating Booking Bar -->
+    <!-- Floating Direct Booking Reservation Section (#booking) -->
     <div class="relative -mt-16 z-30">
-      <BookingBar />
+      <BookingBar 
+        :rooms="props.rooms" 
+        @bookingSuccess="handleBookingSuccess" 
+      />
     </div>
 
     <!-- 2. Editorial Introduction Section -->
-    <section class="py-28 bg-luxury-offwhite font-sans text-luxury-charcoal">
-      <div class="max-w-5xl mx-auto px-6 text-center">
-        <span class="text-xs uppercase tracking-[0.35em] text-luxury-gold font-medium block mb-4">
-          THE VIJE PHILOSOPHY
-        </span>
-        <h2 class="font-serif text-3xl md:text-5xl font-light text-luxury-charcoal leading-snug mb-8">
-          "An intimate retreat crafted for those who seek quiet elegance and meaningful connection with nature."
-        </h2>
-        <div class="w-16 h-[1px] bg-luxury-gold/50 mx-auto mb-8"></div>
-        <p class="text-luxury-charcoal/70 text-sm md:text-base leading-relaxed font-light max-w-3xl mx-auto">
-          Nestled amidst lush botanical gardens and facing the infinite horizon of the ocean, Vije Boutique Resort marries traditional Balinese craftsmanship with modern luxury. Here, time slows down, allowing you to immerse in pure stillness, epicurean gastronomy, and holistic renewal.
-        </p>
+    <section id="about" class="py-24 lg:py-32 px-6 lg:px-12 max-w-6xl mx-auto text-center">
+      <span class="text-xs uppercase tracking-[0.35em] text-luxury-bronze font-medium block mb-3">
+        SANCTUARY OF CALM
+      </span>
+      <h2 class="font-serif text-3xl md:text-5xl lg:text-6xl text-luxury-charcoal font-light leading-tight mb-8">
+        An intimate retreat designed for those who appreciate the beauty of slow living.
+      </h2>
+      <div class="w-16 h-[1px] bg-luxury-gold/50 mx-auto mb-10"></div>
+      <p class="text-luxury-charcoal/80 text-sm md:text-base lg:text-lg max-w-3xl mx-auto font-light leading-relaxed mb-16">
+        Nestled along Bali’s tranquil coast, Vije Boutique Resort marries traditional Balinese craftsmanship with understated contemporary luxury. Every suite and villa is oriented toward nature, offering sweeping sea vistas, lush tropical gardens, and complete privacy.
+      </p>
+
+      <!-- Grid Highlights -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+        <div class="p-8 border border-luxury-sand/60 bg-white/50 backdrop-blur-sm space-y-3">
+          <div class="w-10 h-10 rounded-full bg-luxury-ivory border border-luxury-sand flex items-center justify-center text-luxury-gold font-serif text-lg">01</div>
+          <h3 class="font-serif text-xl text-luxury-charcoal font-medium">Bespoke Butler Service</h3>
+          <p class="text-xs text-luxury-charcoal/70 leading-relaxed font-light">Dedicated 24-hour personal butler attending to your every preference with quiet discretion.</p>
+        </div>
+
+        <div class="p-8 border border-luxury-sand/60 bg-white/50 backdrop-blur-sm space-y-3">
+          <div class="w-10 h-10 rounded-full bg-luxury-ivory border border-luxury-sand flex items-center justify-center text-luxury-gold font-serif text-lg">02</div>
+          <h3 class="font-serif text-xl text-luxury-charcoal font-medium">Private Ocean Plunge Pools</h3>
+          <p class="text-xs text-luxury-charcoal/70 leading-relaxed font-light">Each sanctuary features an exclusive infinity plunge pool gazing onto sunset horizon.</p>
+        </div>
+
+        <div class="p-8 border border-luxury-sand/60 bg-white/50 backdrop-blur-sm space-y-3">
+          <div class="w-10 h-10 rounded-full bg-luxury-ivory border border-luxury-sand flex items-center justify-center text-luxury-gold font-serif text-lg">03</div>
+          <h3 class="font-serif text-xl text-luxury-charcoal font-medium">Organic Architecture</h3>
+          <p class="text-xs text-luxury-charcoal/70 leading-relaxed font-light">Hand-carved teak, local volcanic stone, and open-air pavilions in harmony with nature.</p>
+        </div>
       </div>
     </section>
 
     <!-- 3. Rooms & Villas Showcase Section -->
-    <RoomCardEditorial :villas="villasList" />
+    <section id="villas" class="py-20 bg-[#FAF8F5] border-y border-luxury-sand/50">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+          <div class="space-y-3">
+            <span class="text-xs uppercase tracking-[0.35em] text-luxury-bronze font-medium block">
+              ACCOMMODATIONS
+            </span>
+            <h2 class="font-serif text-4xl md:text-5xl text-luxury-charcoal font-light">
+              Suites & Private Villas
+            </h2>
+          </div>
+          <p class="text-xs lg:text-sm text-luxury-charcoal/70 max-w-md font-light mt-4 md:mt-0">
+            Thoughtfully crafted residences where indoor comfort flows effortlessly into lush outdoor tropical greenery.
+          </p>
+        </div>
 
-    <!-- 4. Curated Experience Section -->
+        <div class="space-y-16">
+          <RoomCardEditorial 
+            v-for="(villa, index) in (props.rooms && props.rooms.length > 0 ? props.rooms : [])" 
+            :key="villa.id"
+            :room="villa"
+            :isReversed="index % 2 !== 0"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Experience & Wellness Section -->
     <ExperienceShowcase />
 
-    <!-- 5. Fine Dining & Culinary Experience Section -->
+    <!-- 5. Fine Dining Showcase Section -->
     <DiningEditorial />
 
-    <!-- 6. Immersive Editorial Gallery Section -->
+    <!-- 6. Immersive Photo Gallery -->
     <ImmersiveGallery />
 
-    <!-- 7. Location & Storytelling Section -->
-    <section id="location" class="py-24 bg-luxury-offwhite font-sans text-luxury-charcoal">
-      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          <div class="lg:col-span-5 space-y-6">
-            <span class="text-xs uppercase tracking-[0.3em] text-luxury-gold font-medium block">
-              PRISTINE LOCATION
-            </span>
-            <h2 class="font-serif text-4xl lg:text-5xl font-light text-luxury-charcoal tracking-wide">
-              A Private Sanctuary By The Sea
-            </h2>
-            <div class="w-12 h-[1px] bg-luxury-gold"></div>
-            <p class="text-luxury-charcoal/70 text-sm leading-relaxed font-light">
-              Situated on Bali’s tranquil coast, Vije Boutique Resort is secluded from crowded tourist hubs while offering effortless access to cultural landmarks, sacred temples, and vibrant coastal villages.
-            </p>
-
-            <div class="space-y-4 pt-4 border-t border-luxury-sand/40 text-xs text-luxury-charcoal/80">
-              <div class="flex items-center space-x-3">
-                <MapPin class="w-4 h-4 text-luxury-gold shrink-0" />
-                <span>45 minutes from Ngurah Rai International Airport (DPS)</span>
-              </div>
-              <div class="flex items-center space-x-3">
-                <Compass class="w-4 h-4 text-luxury-gold shrink-0" />
-                <span>15 minutes to Cultural Temples & Artisan Markets</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="lg:col-span-7 relative shadow-xl overflow-hidden bg-luxury-sand/30 aspect-[16/10] border border-luxury-sand/50">
-            <img 
-              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80" 
-              alt="Bali Sanctuary Location" 
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
-            <div class="absolute bottom-6 right-6 bg-white/95 backdrop-blur-md p-4 text-xs font-serif border border-luxury-gold/40 max-w-xs shadow-md">
-              <p class="italic text-luxury-charcoal">"Surrounded by emerald palms, sacred waters, and golden sunsets."</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. Testimonials Section -->
-    <section class="py-24 bg-luxury-cream/40 border-t border-luxury-sand/30 font-sans text-luxury-charcoal">
+    <!-- 7. Guest Testimonials Section -->
+    <section class="py-24 bg-white border-t border-luxury-sand/50">
       <div class="max-w-4xl mx-auto px-6 text-center space-y-12">
-        <Quote class="w-10 h-10 text-luxury-gold mx-auto opacity-70" />
+        <Quote class="w-12 h-12 text-luxury-gold/40 mx-auto" />
         
-        <div class="space-y-8">
-          <div v-for="(item, i) in testimonials" :key="i" class="space-y-4">
-            <p class="font-serif text-2xl md:text-3xl font-light italic text-luxury-charcoal leading-relaxed">
-              "{{ item.quote }}"
-            </p>
-            <div class="text-xs uppercase tracking-[0.25em] text-luxury-gold font-semibold">
-              {{ item.author }} — <span class="text-luxury-charcoal/60 font-normal">{{ item.location }}</span>
-            </div>
+        <div class="space-y-6">
+          <p class="font-serif text-2xl md:text-3xl text-luxury-charcoal font-light italic leading-relaxed">
+            "{{ testimonials[0].quote }}"
+          </p>
+          <div>
+            <span class="font-serif text-lg text-luxury-charcoal font-medium block">{{ testimonials[0].author }}</span>
+            <span class="text-xs uppercase tracking-[0.2em] text-luxury-bronze font-light">{{ testimonials[0].location }}</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 9. Booking Conversion CTA Section -->
-    <section class="relative py-28 overflow-hidden bg-luxury-charcoal text-white text-center">
-      <div class="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1800&q=80" 
-          alt="Resort Retreat Background" 
-          class="w-full h-full object-cover opacity-30"
-        />
+    <!-- 8. Conversion Section CTA -->
+    <section class="relative py-28 bg-luxury-forest text-white overflow-hidden text-center">
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2000&q=80" alt="Resort Background" class="w-full h-full object-cover" />
       </div>
 
       <div class="relative z-10 max-w-3xl mx-auto px-6 space-y-8">
-        <span class="text-xs uppercase tracking-[0.4em] text-luxury-gold font-medium block">
-          RESERVE YOUR EXPERIENCE
+        <span class="text-xs uppercase tracking-[0.4em] text-luxury-sand font-medium block">
+          YOUR PRIVATE ESCAPE AWAITS
         </span>
-        <h2 class="font-serif text-4xl md:text-6xl font-light tracking-wide text-white">
-          Your Private Escape Awaits
+        <h2 class="font-serif text-4xl md:text-6xl font-light text-white leading-tight">
+          Reserve Your Stay at Vije Boutique Resort
         </h2>
         <p class="text-luxury-ivory/80 text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed">
           Book directly with us to enjoy exclusive best rate guarantees, complimentary breakfast, and personalized concierge planning.
@@ -285,6 +232,13 @@ const testimonials = [
 
     <!-- Quiet Luxury Footer -->
     <LuxuryFooter />
+
+    <!-- Direct Booking Confirmation E-Voucher Modal -->
+    <BookingConfirmationModal 
+      :isOpen="isConfirmationModalOpen"
+      :booking="confirmedBooking"
+      @close="isConfirmationModalOpen = false"
+    />
 
   </div>
 </template>

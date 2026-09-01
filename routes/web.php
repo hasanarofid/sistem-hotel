@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RppController;
-use App\Http\Controllers\TokenPurchaseController;
+use App\Http\Controllers\GuestBookingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\TokenPackageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\BookingController;
 use Illuminate\Support\Facades\Route;
@@ -14,9 +12,12 @@ use Inertia\Inertia;
 
 // Landing Page & Public Legal Compliance Pages (Vije Boutique Resort)
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/bookings', [GuestBookingController::class, 'store'])->name('guest.bookings.store');
+
 Route::get('/terms', function () {
     return Inertia::render('Terms');
 })->name('terms');
+
 Route::get('/privacy', function () {
     return Inertia::render('Privacy');
 })->name('privacy');
@@ -27,7 +28,6 @@ Route::get('/run-migrate', function () {
         \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
         \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
 
-        // Pure PHP Symlink creation if function is enabled by host
         if (function_exists('symlink')) {
             $target = storage_path('app/public');
             $shortcut = public_path('storage');
@@ -55,9 +55,6 @@ Route::get('/storage/{path}', function ($path) {
     return response()->file($filePath);
 })->where('path', '.*')->name('storage.fallback');
 
-// Midtrans Webhook Callback (Public POST route)
-Route::post('/api/midtrans/callback', [TokenPurchaseController::class, 'midtransCallback'])->name('midtrans.callback');
-
 // Authenticated User Dashboard Redirect
 Route::get('/dashboard', function () {
     $user = auth()->user();
@@ -70,7 +67,6 @@ Route::get('/dashboard', function () {
 
 // User Authenticated Routes
 Route::middleware('auth')->group(function () {
-    // Profile Settings
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -78,17 +74,10 @@ Route::middleware('auth')->group(function () {
 
 // Admin CMS & Hotel Management Routes (Admin & Staff Access)
 Route::middleware(['auth', 'role:admin|super_admin|reservation_staff|finance'])->prefix('admin')->name('admin.')->group(function () {
-    // 1. Dashboard Admin Vije Boutique Resort
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    // 2. Room & Accommodation Management
     Route::resource('rooms', RoomController::class)->except(['create', 'edit', 'show']);
-
-    // 3. Booking & Reservation Management
     Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
     Route::patch('/bookings/{booking}/status', [BookingController::class, 'updateStatus'])->name('bookings.status');
-
-    // 4. List User Management
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::post('/users/{user}/role', [UserController::class, 'updateRole'])->name('users.role');
 });
