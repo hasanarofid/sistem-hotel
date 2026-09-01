@@ -2,10 +2,20 @@
 
 **Vije Boutique Resort** adalah platform web hospitality & *Direct Booking Management System* yang dirancang khusus untuk membangun ulang dan meng-elevasi **Vije Boutique Resort** ([www.vijeboutiqueresort.com](https://www.vijeboutiqueresort.com)) menjadi antarmuka digital berkelas dunia mengusung standar **"Quiet Luxury Boutique Resort"** (Inspirasi dari **Aman Resorts** & **Kempinski Hotels**).
 
+- **Buku Panduan Penggunaan:** [MANUAL_BOOK_VIJE_BOUTIQUE_RESORT.md](file:///MANUAL_BOOK_VIJE_BOUTIQUE_RESORT.md) `[MANUAL BOOK TAMU & ADMIN]`
 - **Dokumen Referensi PRD:** `PRD — Vije Boutique Resort.pdf`
 - **Aturan Repositori & Agen:** [.agents/AGENTS.md](file:///.agents/AGENTS.md) / [.cursorrules](file:///.cursorrules)
 - **Target Repository:** `git@github.com:hasanarofid/sistem-hotel.git`
 - **Developer & Owner:** [@hasanarofid.site](https://hasanarofid.site) | WhatsApp: [Wa.me/628814959247](https://Wa.me/628814959247)
+
+---
+
+## 📖 Manual Book & Panduan Pengoperasian
+Sistem dilengkapi dengan **Buku Panduan Penggunaan Lengkap** untuk 2 perspektif pengguna utama:
+1. **Panduan Tamu (Guest Direct Booking):** Langkah pencarian tanggal, alokasi villa, instruksi pembayaran online (QRIS/VA/CC), serta klaim e-voucher digital.
+2. **Panduan Admin & Staf Hotel:** Operasional *Hospitality Management Console*, pemantauan okupansi real-time, manajemen harga per malam, dan perubahan lifecycle reservasi tamu.
+
+👉 **Akses Manual Book:** [MANUAL_BOOK_VIJE_BOUTIQUE_RESORT.md](file:///MANUAL_BOOK_VIJE_BOUTIQUE_RESORT.md)
 
 ---
 
@@ -76,7 +86,7 @@ npm run build
 
 # Commit dan Push ke Repository
 git add .
-git commit -m "feat/redesign: implement PRD rules, RBAC & Quiet Luxury guidelines"
+git commit -m "docs: add comprehensive manual book for guest and admin users"
 git push origin master
 ```
 
