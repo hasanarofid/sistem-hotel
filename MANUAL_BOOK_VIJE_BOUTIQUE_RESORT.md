@@ -1,271 +1,166 @@
 # BUKU PANDUAN PENGGUNAAN SISTEM (MANUAL BOOK)
-## **Vije Boutique Resort — Luxury Hotel & Direct Booking Management System**
+## **Vije Boutique Resort — Luxury Hotel & Direct Booking System**
 
 ---
 
-> **Dokumen Resmi:** Manual Book Operasional & Panduan Pengguna  
-> **Target Sistem:** Website & Management Console Vije Boutique Resort ([www.vijeboutiqueresort.com](https://www.vijeboutiqueresort.com))  
+> **Dokumen Resmi:** Manual Book Operasional & Panduan Pengguna Sistem  
+> **Target Aplikasi:** Website & Management Console Vije Boutique Resort ([www.vijeboutiqueresort.com](https://www.vijeboutiqueresort.com) / [hotel.hasanarofid.site](https://hotel.hasanarofid.site))  
 > **Versi Aplikasi:** 1.0 (Quiet Luxury Edition)  
-> **Penyusun:** Hasan Arofid — Senior Full-Stack & Hospitality Developer ([hasanarofid.site](https://hasanarofid.site))  
+> **Penyusun:** Hasan Arofid — Senior Full-Stack & Hospitality Developer  
 > **Tanggal Rilis:** September 2026  
 
 ---
 
 ## DAFTAR ISI
 
-1. [Bab 1: Pendahuluan & Gambaran Umum Sistem](#bab-1-pendahuluan--gambaran-umum-sistem)
-2. [Bab 2: Panduan Penggunaan Tamu (Guest Direct Booking Journey)](#bab-2-panduan-penggunaan-tamu-guest-direct-booking-journey)
-3. [Bab 3: Panduan Operasional Administrator & Staf Hotel](#bab-3-panduan-operasional-administrator--staf-hotel)
-4. [Bab 4: Panduan Pemeliharaan & Prosedur Teknis](#bab-4-panduan-pemeliharaan--prosedur-teknis)
-5. [Bab 5: Pertanyaan Sering Diajukan & Penanganan Masalah (FAQ & Troubleshooting)](#bab-5-pertanyaan-sering-diajukan--penanganan-masalah-faq--troubleshooting)
+1. [Bab 1: Daftar Akun Login & Kredensial Akses Staf](#bab-1-daftar-akun-login--kredensial-akses-staf)
+2. [Bab 2: Panduan Reservasi Tamu Publik (Guest Journey)](#bab-2-panduan-reservasi-tamu-publik-guest-journey)
+3. [Bab 3: Panduan Operasional Dashboard Admin & Resepsionis](#bab-3-panduan-operasional-dashboard-admin--resepsionis)
+4. [Bab 4: Panduan Manajemen Kamar & Tarif Dinamis](#bab-4-panduan-manajemen-kamar--tarif-dinamis)
+5. [Bab 5: Penanganan Masalah & FAQ Operasional (Troubleshooting)](#bab-5-penanganan-masalah--faq-operasional-troubleshooting)
 
 ---
 
-## BAB 1: PENDAHULUAN & GAMBARAN UMUM SISTEM
+## BAB 1: DAFTAR AKUN LOGIN & KREDENSIAL AKSES STAF
 
-### 1.1 Visi & Tujuan Sistem
-Sistem **Vije Boutique Resort** dirancang khusus untuk memberikan pengalaman *digital hospitality* berkelas dunia dengan standar **"Quiet Luxury Boutique Resort"** (Inspirasi dari **Aman Resorts** & **Kempinski Hotels**). 
+Untuk mengakses panel kontrol operasional manajemen hotel (*Admin Hospitality Console*), peramban (*browser*) dapat diarahkan ke URL login resmi:
+- **URL Login Admin:** `https://www.vijeboutiqueresort.com/login` atau `https://hotel.hasanarofid.site/login`
 
-Sistem ini mengintegrasikan antarmuka publik visual yang menawan dengan **Direct Booking Engine** yang aman dan bebas komisi pihak ketiga (OTA), terhubung secara langsung ke panel kontrol operasional manajemen hotel (*Admin Dashboard*).
+### 1.1 Tabel Matriks Kredensial Akun Default (Seeded Accounts)
 
-```
-+-----------------------------------------------------------------------------------+
-|                        EKOSISTEM SISTEM VIJE BOUTIQUE RESORT                      |
-+-----------------------------------------------------------------------------------+
-|  [ PUBLIC GUEST ]    : Landing Page -> Room Showcase -> Direct Checkout -> Voucher|
-|  [ PAYMENT GATEWAY ] : Automated QRIS / Virtual Account / Credit Card Settlement  |
-|  [ NOTIFICATION ]    : WhatsApp Instant E-Voucher & Email PDF Invoice Engine      |
-|  [ ADMIN CONSOLE ]   : Occupancy Monitor -> Room Inventory -> Reservation Desk   |
-+-----------------------------------------------------------------------------------+
-```
+Berikut adalah daftar akun staf default yang telah dikonfigurasi pada database sistem:
 
----
+| Peran (Role) | Nama Pengguna | Email Login | Password Default | Target Halaman Akses | Hak Akses Utama |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Super Admin** | Super Administrator Vije | `superadmin@vijeboutiqueresort.com` | `password` | `/admin/dashboard` | Akses Penuh (Full System Access), Manajemen Akun & Konfigurasi Utama. |
+| **Admin (GM)** | General Manager Admin | `admin@vijeboutiqueresort.com` | `password` | `/admin/dashboard` | Pengelolaan Operasional, Laporan Pendapatan, Okupansi, & Inventaris Kamar. |
+| **Reservation Staff** | Reservation Frontdesk Staff | `reservation@vijeboutiqueresort.com` | `password` | `/admin/bookings` | Frontdesk Booking, Proses Check-In / Check-Out, & Input Direct Booking Walk-in. |
+| **Finance Officer** | Finance & Accounting Lead | `finance@vijeboutiqueresort.com` | `password` | `/admin/dashboard` | Verifikasi Transaksi Pembayaran, Laporan Keuangan, & Rekonsiliasi Bank. |
 
-### 1.2 Peran Pengguna & Matriks Hak Akses (RBAC Matrix)
-
-Sistem ini menerapkan **Role-Based Access Control (RBAC)** untuk memastikan setiap staf hotel dan pengguna bekerja sesuai batasan wewenangnya:
-
-| Peran (Role) | Hak Akses Utama | Tujuan & Tanggung Jawab |
-| :--- | :--- | :--- |
-| **Public Guest (Tamu)** | Akses Publik Landing Page, Reservasi Kamar, Checkout | Melihat profil resort, memilih tanggal menginap, membayar reservasi. |
-| **Super Admin** | Akses Penuh (Full System Access) | Pengaturan konfigurasi utama sistem, manajemen seluruh akun & peran staf. |
-| **Admin (General Manager)** | Pengelolaan Operasional & Inventaris | Meninjau laporan pendapatan, mengelola inventaris kamar, reservasi, & diskon. |
-| **Reservation Staff** | Frontdesk & Resepsionis Hotel | Memproses reservasi masuk, Check-In / Check-Out tamu, input booking walk-in. |
-| **Finance Officer** | Keuangan & Laporan Transaksi | Verifikasi transaksi pembayaran, laporan keuangan, & rekonsiliasi bank. |
-| **Content Manager** | CMS & Media Galeri | Pengelolaan foto resort, promosi dining, fasilitas, & artikel cerita resort. |
+> ⚠️ **CATATAN KEAMANAN PENTING:**  
+> Demi keamanan sistem produksi, seluruh password default (`password`) **WAJIB diubah** oleh masing-masing staf saat pertama kali melakukan login melalui menu **Profile Settings**.
 
 ---
 
-## BAB 2: PANDUAN PENGGUNAAN TAMU (GUEST DIRECT BOOKING JOURNEY)
-
-### 2.1 Menjelajahi Website Publik Resort
-
-Tamu yang mengakses website [www.vijeboutiqueresort.com](https://www.vijeboutiqueresort.com) akan disambut oleh antarmuka minimalis elegan. Berikut bagian utama website:
-
-1. **Full-Screen Immersive Hero:**
-   - Menampilkan fotografi atmosfer resort resolusi tinggi dengan navigasi transparan.
-   - Tombol **"Book Your Stay"** membawa langsung ke formulir pencarian tanggal.
-2. **Editorial Introduction:**
-   - Narasi pengantar keindahan alam dan konsep *slow living* di Vije Boutique Resort.
-3. **Rooms & Suites Showcase:**
-   - Katalog interaktif pilihan kamar/villa (*Grand Ocean Pool Villa*, *Sanctuary Garden Suite*, *Royal Residence*, dll.) lengkap dengan harga per malam, kapasitas, ukuran ($m^2$), dan amenitas eksklusif.
-4. **Experience & Dining Showcase:**
-   - Informasi tentang fasilitas spa & wellness, restoran private dining, infinity pool, dan tur lokal.
-5. **Immersive Masonry Gallery:**
-   - Galeri foto resolusi tinggi gaya majalah travel mewah.
-
----
-
-### 2.2 Langkah-Langkah Pemesanan Kamar Langsung (Direct Booking Steps)
+### 1.2 Petunjuk Langkah Login ke Panel Admin
 
 ```mermaid
 flowchart TD
-    Step1[1. Pilih Tanggal Check-In & Check-Out di Booking Bar] --> Step2[2. Pilih Kamar / Villa Sesuai Keinginan]
-    Step2 --> Step3[3. Isi Data Pemesan & Request Khusus]
-    Step3 --> Step4[4. Ringkasan Rincian & Total Pembayaran]
-    Step4 --> Step5[5. Pemilihan Metode Pembayaran Online]
-    Step5 --> Step6[6. Konfirmasi Instan & Terima E-Voucher via WA]
+    A[Buka Peramban / Browser] --> B[Akses URL: /login]
+    B --> C[Isi Email & Password Staf]
+    C --> D[Klik Tombol Sign In to Control Panel]
+    D --> E{Verifikasi Login}
+    E -- Berhasil --> F[Masuk ke Hospitality Control Panel /admin/dashboard]
+    E -- Gagal --> G[Pesan Error: Email / Password Salah]
 ```
 
-#### Detail Petunjuk Langkah:
-
-#### **Langkah 1: Pencarian Ketersediaan Tanggal**
-1. Pada **Floating Booking Bar** di bagian atas atau hero section, pilih:
-   - **Check-In Date:** Tanggal mulai menginap.
-   - **Check-Out Date:** Tanggal selesai menginap.
-   - **Guests:** Jumlah tamu (Dewasa & Anak).
-2. Klik tombol **"Check Availability"**.
-
-#### **Langkah 2: Memilih Kamar / Villa**
-1. Sistem akan menampilkan pilihan villa yang **tersedia** pada tanggal yang dipilih.
-2. Klik **"Explore Details"** untuk melihat galeri foto kamar, pilihan ranjang, spesifikasi luas, dan daftar amenitas (kolam renang pribadi, butler 24/7, Sarapan gratis, dsb).
-3. Klik tombol **"Reserve This Villa"**.
-
-#### **Langkah 3: Mengisi Formulir Data Tamu**
-Isi informasi pemesan secara presisi:
-- **Nama Lengkap:** Sesuai KTP / Paspor.
-- **Alamat Email:** Untuk pengiriman E-Voucher PDF & resi tagihan.
-- **Nomor WhatsApp:** Untuk pengiriman pesan konfirmasi otomatis & koordinasi penjemputan.
-- **Special Requests (Opsional):** Misal: *Honeymoon setup, late check-in, penjemputan bandara*.
-
-#### **Langkah 4: Pemrosesan Pembayaran Online (Payment Gateway)**
-1. Tinjau ringkasan pesanan (Nama Kamar, Jumlah Malam, Pajak & Service Charge).
-2. Pilih metode pembayaran yang diinginkan:
-   - **QRIS:** Pindai kode QR menggunakan GoPay, OVO, ShopeePay, BCA Mobile, Livin, dsb.
-   - **Virtual Account (VA):** Transfer bank instan (BCA, Mandiri, BRI, BNI, Permata).
-   - **Credit Card:** Kartu Kredit / Debit Visa & Mastercard.
-3. Klik **"Pay & Confirm Reservation"**.
-
-#### **Langkah 5: Penerimaan Digital E-Voucher**
-Setelah pembayaran berhasil diverifikasi:
-1. Layar akan secara otomatis menampilkan halaman **Booking Confirmation** berisi **Kode Reservasi Unique (contoh: `VBR-202609-001`)**.
-2. **Notifikasi WhatsApp Automatis** terkirim ke nomor WhatsApp Anda berisi ucapan selamat datang, e-voucher, dan lokasi resort di Google Maps.
-3. **E-Voucher PDF Resmi** terkirim ke email Anda sebagai bukti check-in.
+1. Buka peramban (*Google Chrome, Mozilla Firefox, atau Safari*).
+2. Ketik alamat `https://www.vijeboutiqueresort.com/login` pada address bar.
+3. Masukkan **Email Login** dan **Password** sesuai tabel kredensial di atas.
+4. Klik tombol **"Sign In to Control Panel"**.
+5. Setelah berhasil, sistem akan mengarahkan Anda ke **Hospitality Management Console** sesuai hak akses peran Anda.
 
 ---
 
-## BAB 3: PANDUAN OPERASIONAL ADMINISTRATOR & STAF HOTEL
+## BAB 2: PANDUAN RESERVASI TAMU PUBLIK (GUEST JOURNEY)
 
-### 3.1 Akses & Login Panel Kontrol Admin
+Website publik Vije Boutique Resort memfasilitasi tamu untuk melakukan pemesanan langsung (*Direct Booking Channel*) tanpa komisi OTA.
 
-1. Buka peramban (*browser*) dan akses URL login admin:
-   `https://www.vijeboutiqueresort.com/login` atau `https://hotel.hasanarofid.site/login`
-2. Masukkan kredensial akun staf hotel:
-   - **Email:** `admin@vijeboutiqueresort.com` *(atau email staf resmi)*
-   - **Password:** *(password rahasia akun)*
-3. Klik **"Sign In to Control Panel"**.
-4. Setelah berhasil login, Anda akan diarah secara otomatis ke **Hospitality Management Console (`/admin/dashboard`)**.
+### 2.1 Alur Pemesanan Kamar di Halaman Publik (`#booking`)
+
+Tamu dapat melakukan pemesanan mandiri melalui formulir interaktif di halaman depan:
+
+1. **Akses Website Utama:** Tamu membuka `https://www.vijeboutiqueresort.com`.
+2. **Formulir Floating Booking Bar (`#booking`):**
+   - **Check In:** Pilih tanggal kedatangan.
+   - **Check Out:** Pilih tanggal kepulangan (Sistem menghitung durasi malam secara otomatis).
+   - **Jumlah Tamu:** Pilih jumlah tamu yang akan menginap.
+   - **Pilih Kamar / Villa:** Pilih kategori akomodasi yang diinginkan (*Grand Ocean Pool Villa, Sanctuary Garden Suite, Royal Residence*). Sistem menampilkan estimasi total tarif secara real-time.
+3. **Pengisian Data Tamu:**
+   - **Nama Lengkap Tamu:** Sesuai KTP / Paspor.
+   - **Alamat Email:** Untuk pengiriman E-Voucher digital & resi pembayaran.
+   - **Nomor WhatsApp:** Untuk konfirmasi pesan instant otomatis.
+   - **Permintaan Khusus (Opsional):** Catatan tambahan (misal: *Honeymoon setup, airport transfer*).
+4. **Metode Pembayaran Online:**
+   - Pilih **QRIS Instant** (BCA, GoPay, OVO, ShopeePay) atau **Virtual Account** (BCA, Mandiri, BRI).
+5. **Konfirmasi & Penerimaan E-Voucher:**
+   - Klik tombol **"Konfirmasi & Bayar Reservasi Now"**.
+   - Modal E-Voucher konfirmasi akan muncul menampilkan **Kode Booking Unik (contoh: `VBR-202609-X9A2`)** dan petunjuk pembayaran.
+   - Pesan konfirmasi WhatsApp akan otomatis terkirim ke ponsel tamu.
 
 ---
 
-### 3.2 Menavigasi Dashboard Utama Admin (`/admin/dashboard`)
+## BAB 3: PANDUAN OPERASIONAL DASHBOARD ADMIN & RESEPSIONIS
 
-Dashboard Admin didesain khusus dengan standar visual Quiet Luxury untuk memberikan gambaran cepat mengenai performa operasional resort.
+### 3.1 Antarmuka Utama Console (`/admin/dashboard`)
 
-```
-+-----------------------------------------------------------------------------------+
-|  VIJE BOUTIQUE RESORT — HOSPITALITY CONTROL PANEL                                |
-+-----------------------------------------------------------------------------------+
-|  [ METRIK OKUPANSI ]   [ PENDAPATAN DIRECT ]  [ TOTAL RESERVASI ]  [ TOTAL UNIT ]|
-|       75% (Occupied)       Rp 49.700.000          4 Pesanan            15 Unit    |
-+-----------------------------------------------------------------------------------+
-|  [ TABEL RESERVASI TERBARU ]                                                      |
-|  - VBR-202609-001 | Elena Rostova | Grand Ocean Villa | PAID      | Action        |
-|  - VBR-202609-002 | Julian Vance  | Garden Suite      | CHECKED IN| Action        |
-+-----------------------------------------------------------------------------------+
+Setelah staf melakukan login, halaman dashboard menyajikan 4 kartu metrik utama:
+
+1. **Tingkat Okupansi (%):** Persentase unit villa terisi dibandingkan total kapasitas unit resort.
+2. **Pendapatan Direct (Rp):** Total nilai transaksi reservasi yang berstatus `PAID` (Lunas).
+3. **Total Reservasi:** Jumlah pesanan masuk serta rincian pemesanan yang sedang aktif.
+4. **Kategori Kamar:** Jumlah tipe kamar dan total unit fisik yang tersedia.
+
+---
+
+### 3.2 Mengelola Status Reservasi (Frontdesk Desk Workflow)
+
+Staf resepsionis dan reservasi mengelola alur status pemesanan tamu pada menu **Reservations (`/admin/bookings`)**:
+
+#### **Siklus Status Reservasi (Status Lifecycle):**
+
+```mermaid
+stateDiagram-v2
+    [*] --> PENDING: Tamu Mengisi Form Booking
+    PENDING --> PAID: Pembayaran Diverifikasi (QRIS/VA/Staf)
+    PAID --> CHECKED_IN: Tamu Tiba di Resort (Check-In)
+    CHECKED_IN --> CHECKED_OUT: Tamu Selesai Menginap (Check-Out)
+    PENDING --> CANCELLED: Pembayaran Kadaluarsa / Waktu Habis
 ```
 
-#### Komponen Utama Dashboard:
-1. **Header Welcome Banner:** Informasi pergerakan reservasi dan akses cepat ke live website.
-2. **Stat Cards Metrics:**
-   - **Tingkat Okupansi (%):** Persentase unit kamar yang terisi/terpesan hari ini.
-   - **Pendapatan Direct (Rp):** Akumulasi transaksi pembayaran lunas dari direct booking.
-   - **Total Reservasi:** Jumlah pesanan kamar masuk dan rincian tamu yang sudah *Checked-In*.
-   - **Tipe & Unit Kamar:** Jumlah kategori dan total kapasitas unit villa.
-3. **Daftar Reservasi Terbaru:** Tabel transaksi 6 pemesanan paling akhir lengkap dengan nama tamu, kode booking, durasi menginap, total tarif, dan badge status pembayaran.
-4. **Inventaris Kamar & Villa Overview:** Ringkasan harga per malam dan jumlah kuota unit setiap kategori.
+#### **Langkah Pengubahan Status oleh Resepsionis:**
+1. Masuk ke menu **Reservations** pada sidebar kiri.
+2. Cari data tamu menggunakan kolom **Search** (Ketik Nama, Kode Booking `VBR-...`, atau No. WA).
+3. Pada kolom **Status**, ubah nilai dropdown sesuai kondisi fisik tamu:
+   - Pilih **`PAID`**: Jika tamu telah menunjukkan bukti pembayaran lunas.
+   - Pilih **`CHECKED_IN`**: Saat tamu tiba di frontdesk dan menerima kunci villa.
+   - Pilih **`CHECKED_OUT`**: Saat tamu menyelesaikan proses check-out dan menyerahkan kunci.
 
 ---
 
-### 3.3 Manajemen Kamar & Villa (`/admin/rooms`)
+## BAB 4: PANDUAN MANAJEMEN KAMAR & TARIF DINAMIS
 
-Modul ini digunakan untuk mengelola katalog akomodasi hotel:
+Manajemen hotel atau General Manager dapat menambah, mengedit, atau meng-update harga kamar sesuai musim (*High Season / Low Season*) melalui menu **Rooms & Villas (`/admin/rooms`)**.
 
-#### **A. Menambah Kamar / Villa Baru:**
-1. Navigasi ke menu **"Rooms & Villas"** di sidebar kiri.
-2. Klik tombol **"+ Tambah Kamar Baru"**.
-3. Isi formulir data kamar:
-   - **Nama Kamar:** Misal: *Cliffside Sunset Suite*.
-   - **Kategori:** Select kategori (*Beachfront Sanctuary, Botanical Hideaway, Cliffside Retreat*).
-   - **Badge Label:** Label promosi (*Signature Residence, Intimate Luxury*).
-   - **Deskripsi Editorial:** Penjelasan konsep dan nuansa kamar.
-   - **Harga per Malam (Rp):** Tarif dasar sebelum pajak.
-   - **Spesifikasi:** Luas ($m^2$), Kapasitas Tamu, Tipe Ranjang.
-   - **Jumlah Unit:** Kuota fisik kamar yang dimiliki resort.
-   - **Image URL:** Link foto utama resolusi tinggi.
-4. Klik **"Simpan Data Kamar"**.
+### 4.1 Mengubah Harga & Kuota Kamar
 
-#### **B. Mengedit Harga & Detail Kamar:**
-1. Pada kartu kamar yang ingin diubah, klik tombol ikon **Edit (Pensil)**.
-2. Perbarui harga atau deskripsi sesuai kebijakan *high season / low season*.
-3. Klik **"Update Detail Kamar"**.
+1. Buka menu **Rooms & Villas** (`/admin/rooms`).
+2. Cari kartu kamar yang ingin disesuaikan (misal: *Grand Ocean Pool Villa*).
+3. Klik ikon **Edit (Pensil)**.
+4. Ubah nilai pada kolom:
+   - **Price Per Night (Rp):** Tarif dasar per malam (misal diubah dari `4.500.000` menjadi `5.200.000` untuk peak season).
+   - **Total Units:** Jumlah fisik unit kamar yang dapat disewakan.
+5. Klik **"Simpan Perubahan"**.  
+   *Tarif baru akan langsung berlaku secara real-time pada formulir reservasi publik.*
 
 ---
 
-### 3.4 Manajemen Reservasi & Kalender Booking (`/admin/bookings`)
+## BAB 5: PENANGANAN MASALAH & FAQ OPERASIONAL (TROUBLESHOOTING)
 
-Modul ini merupakan pusat kerja tim Resepsionis / *Frontdesk Staff* untuk memantau tamu dan mengubah status pemesanan:
+### Q1: Bagaimana jika tamu lupa password atau staf ingin mengganti password akun?
+- **Jawaban:** Staf yang sedang login dapat mengklik nama profil di pojok kanan atas, pilih **Profile Settings**, lalu masukkan password lama dan password baru pada bagian *Update Password*.
 
-#### **A. Memfilter & Mencari Pesanan Tamu:**
-1. Navigasi ke menu **"Reservations"** di sidebar.
-2. Gunakan kolom pencarian untuk mengetik: *Nama Tamu, Email, No. WhatsApp, atau Kode Booking*.
-3. Gunakan filter status dropdown untuk menyaring pesanan (*Pending, Paid, Checked In, Checked Out, Cancelled*).
+### Q2: Tamu mengklaim sudah bayar via QRIS tetapi status di admin masih `PENDING`?
+- **Penyebab:** Keterlambatan respon jaringan webhook bank/payment gateway.
+- **Solusi:** Staf Resepsionis / Finance dapat memeriksa bukti transaksi tamu di aplikasi bank, lalu mengubah status reservasi secara manual dari `PENDING` menjadi **`PAID`** pada tabel `/admin/bookings`.
 
-#### **B. Mengubah Status Reservasi Tamu (Lifecycle):**
-Resepsionis dapat mengubah status reservasi langsung dari dropdown pada tabel:
-- **`PENDING`:** Tamu belum melakukan pembayaran.
-- **`PAID`:** Pembayaran terverifikasi lunas, kamar siap disiapkan.
-- **`CHECKED_IN`:** Tamu telah tiba di resort dan menerima kunci kamar.
-- **`CHECKED_OUT`:** Tamu telah selesai menginap dan melakukan pembaruan status unit.
-- **`CANCELLED`:** Pesanan dibatalkan atau pembayaran kadaluarsa.
+### Q3: Apakah dua tamu bisa memesan kamar yang sama di tanggal yang sama (*Double Booking*)?
+- **Jawaban:** **Tidak bisa.** Sistem backend dilengkapi dengan *Pessimistic Database Locking* (`lockForUpdate()`). Saat satu pemesanan sedang diproses pada tanggal tersebut, kuota unit langsung dikunci secara atomic di server.
 
 ---
 
-## BAB 4: PANDUAN PEMELIHARAAN & PROSEDUR TEKNIS
+### **KONTAK DUKUNGAN TEKNIS**
+Jika mengalami kendala operasional sistem di luar petunjuk di atas, hubungi tim teknis:
 
-Bagi tim teknis atau administrator sistem yang memelihara server dan repositori codebase:
-
-### 4.1 Menjalankan Database Migration & Seeder
-Jika perlu melakukan reset database atau inisialisasi ulang data di environment staging/production:
-
-```bash
-# Buka terminal di directory project
-cd /home/hasanarofid/Documents/hasanarofid/proposal/hotel
-
-# Jalankan fresh migration dan hotel seeder
-php artisan migrate:fresh --seed
-```
-
-### 4.2 Kompilasi Frontend Assets (Vue 3 / Tailwind CSS)
-Setiap kali ada pembaruan pada komponen UI atau Tailwind CSS:
-
-```bash
-# Build produksi frontend assets
-npm run build
-
-# Commit & Push ke Git Repository
-git add .
-git commit -m "feat/admin: update quiet luxury UI layout & bookings"
-git push origin master
-```
-
-### 4.3 Pemeliharaan Hosting Darurat via URL (`/run-migrate`)
-Jika server hosting tidak memiliki akses SSH terminal, administrator dapat memicu migrasi dan penyimpanan symlink melalui URL web terlindungi:
-- Akses: `https://www.vijeboutiqueresort.com/run-migrate`
-- Skrip ini akan menjalankan `migrate`, `db:seed`, pembersihan cache Laravel, dan pembentukan symlink storage secara otomatis.
-
----
-
-## BAB 5: PERTANYAAN SERING DIAJUKAN & PENANGANAN MASALAH (FAQ & TROUBLESHOOTING)
-
-### Q1: Tamu mengaku sudah bayar via QRIS/VA tetapi status reservasi masih `PENDING`?
-- **Penyebab:** Terjadi keterlambatan impuls webhook dari Payment Gateway (Midtrans/Xendit) atau masalah koneksi internet.
-- **Solusi Administrator:**
-  1. Buka menu **Reservations (`/admin/bookings`)**.
-  2. Cari nama tamu atau kode booking.
-  3. Cek bukti transfer tamu, lalu ubah status secara manual dari dropdown menjadi **`PAID`**.
-
-### Q2: Bagaimana cara menambah promo diskon atau mengubah harga kamar saat peak season?
-- **Solusi:** Buka menu **Rooms & Villas (`/admin/rooms`)**, klik ikon **Edit** pada kamar yang dituju, dan sesuaikan nilai tarif pada kolom **Harga per Malam**. Seluruh hitungan di booking engine client-side akan otomatis mengikuti tarif baru tersebut.
-
-### Q3: Apakah sistem ini mencegah dua tamu memesan kamar yang sama di tanggal bersamaan (*Double Booking*)?
-- **Ya, Pasti.** Sistem backend Laravel diisi oleh aturan bisnis *atomic pessimistic database locking* (`lockForUpdate()`) di dalam `DB::transaction()`. Saat satu transaksi sedang memproses tanggal tertentu, sistem secara otomatis mengunci kuota kamar agar tidak dapat diambil oleh pengguna lain di milidetik yang sama.
-
----
-
-### **INFORMASI DUKUNGAN TEKNIS & KONTAK**
-Jika memerlukan bantuan pemeliharaan lebih lanjut atau kustomisasi fitur baru, hubungi pengembang sistem:
-
-- 💬 **WhatsApp Support:** [https://Wa.me/628814959247](https://Wa.me/628814959247) (`+62 881-4959-247`)
-- 🌐 **Website Portfolio:** [hasanarofid.site](https://hasanarofid.site)
-- 📧 **Repository Project:** `git@github.com:hasanarofid/sistem-hotel.git`
+- 💬 **WhatsApp Support:** [https://Wa.me/628814959247](https://Wa.me/628814959247) (`+62 881-4959-247`)  
+- 🌐 **Portfolio & Support:** [hasanarofid.site](https://hasanarofid.site)  
