@@ -181,25 +181,26 @@ Sebagai jaminan kualitas hasil redesign visual, seluruh implementasi mengikuti s
 
 ## 7. RINCIAN PENAWARAN HARGA & PAKET INVESTASI (COMMERCIAL PROPOSAL)
 
-Kami menawarkan 3 pilihan paket investasi pengembangan yang dapat disesuaikan dengan skala prioritas dan target operasional Vije Boutique Resort:
+Kami menawarkan pilihan paket investasi pengembangan yang fleksibel, mulai dari **Redesign Tampilan Visual Saja** hingga **End-to-End Hotel System**:
 
 ### A. Tabel Skema Paket Investasi
 
-| Fitur & Layanan | Paket Standard | Paket Professional ⭐ *(RECOMMENDED)* | Paket Enterprise |
-| :--- | :---: | :---: | :---: |
-| **Redesign Tampilan Publik (Quiet Luxury)** | ✅ Ya | ✅ Ya | ✅ Ya |
-| **Direct Booking Engine (Form #booking)** | ✅ Ya | ✅ Ya | ✅ Ya |
-| **Integrasi Payment Gateway (QRIS, VA, CC)** | ✅ Ya | ✅ Ya | ✅ Ya |
-| **Mobile-First & Core Web Vitals Optimization** | ✅ Ya | ✅ Ya | ✅ Ya |
-| **Quiet Luxury Admin Management Console** | ❌ Tidak | ✅ Ya | ✅ Ya |
-| **Manajemen Kamar, Rate Dinamis & Kuota** | ❌ Tidak | ✅ Ya | ✅ Ya |
-| **Role-Based Access Control (5 RBAC Roles)** | ❌ Tidak | ✅ Ya | ✅ Ya |
-| **WhatsApp Automated E-Voucher & Email Resi** | ❌ Tidak | ✅ Ya | ✅ Ya |
-| **Audit Logging & Export Laporan Keuangan** | ❌ Tidak | ✅ Ya | ✅ Ya |
-| **Integrasi Multi-Branch & Custom PMS API** | ❌ Tidak | ❌ Tidak | ✅ Ya |
-| **Masa Garansi & Pemeliharaan System** | 3 Bulan | **6 Bulan** | 12 Bulan |
-| **Sesi Pelatihan (Training) Staf Hotel** | 1 Sesi | **2 Sesi** | Unlimited |
-| **NILAI INVESTASI (IDR)** | **Rp 17.500.000** | **Rp 28.500.000** | **Rp 45.000.000** |
+| Fitur & Layanan | Paket 1: Redesign Visual Saja | Paket 2: Direct Booking Engine | Paket 3: Professional ⭐ *(RECOMMENDED)* | Paket 4: Enterprise |
+| :--- | :---: | :---: | :---: | :---: |
+| **Redesign Tampilan Publik (Quiet Luxury)** | ✅ Ya | ✅ Ya | ✅ Ya | ✅ Ya |
+| **Responsif Layout (Mobile, Tablet, Desktop)** | ✅ Ya | ✅ Ya | ✅ Ya | ✅ Ya |
+| **SEO Hospitality & WebP Optimization** | ✅ Ya | ✅ Ya | ✅ Ya | ✅ Ya |
+| **Direct WA Reservation Link (Tanpa Engine)** | ✅ Ya | ❌ (Diganti Engine) | ❌ (Diganti Engine) | ❌ (Diganti Engine) |
+| **Direct Booking Engine (Form #booking)** | ❌ Tidak | ✅ Ya | ✅ Ya | ✅ Ya |
+| **Integrasi Payment Gateway (QRIS, VA, CC)** | ❌ Tidak | ✅ Ya | ✅ Ya | ✅ Ya |
+| **Quiet Luxury Admin Management Console** | ❌ Tidak | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **Manajemen Kamar, Rate Dinamis & Kuota** | ❌ Tidak | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **Role-Based Access Control (5 RBAC Roles)** | ❌ Tidak | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **WhatsApp Automated E-Voucher & Resi PDF** | ❌ Tidak | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **Audit Logging & Laporan Keuangan** | ❌ Tidak | ❌ Tidak | ✅ Ya | ✅ Ya |
+| **Integrasi Multi-Branch & PMS API** | ❌ Tidak | ❌ Tidak | ❌ Tidak | ✅ Ya |
+| **Masa Garansi & Pemeliharaan System** | 2 Bulan | 3 Bulan | **6 Bulan** | 12 Bulan |
+| **NILAI INVESTASI (IDR)** | **Rp 8.500.000** | **Rp 17.500.000** | **Rp 28.500.000** | **Rp 45.000.000** |
 
 ---
 
@@ -219,10 +220,10 @@ Untuk menjamin kenyamanan dan transparansi pengerjaan proyek, pembayaran dilakuk
 
 1. **Termin 1 — Down Payment (40%):**
    - Dibayarkan saat penandatanganan kesepakatan (MoU) & Kick-off pengerjaan proyek.
-   - *Pekerjaan:* Riset visual, wireframing, dan pembentukan struktur dasar database.
+   - *Pekerjaan:* Riset visual, wireframing, dan pembentukan struktur dasar database/layout.
 2. **Termin 2 — Milestone Development (40%):**
    - Dibayarkan setelah seluruh pengembangan Frontend Quiet Luxury, Backend REST API, dan sistem integrasi selesai disajikan di environment Staging.
-   - *Pekerjaan:* Pengujian alur booking, verifikasi payment gateway, dan penyempurnaan responsivitas mobile.
+   - *Pekerjaan:* Pengujian alur visual, responsivitas mobile, dan verifikasi alur pemesanan.
 3. **Termin 3 — Pelunasan & Go-Live (20%):**
    - Dibayarkan setelah tahapan *User Acceptance Test (UAT)* disetujui, pelatihan staf hotel selesai, dan sistem resmi diluncurkan secara *Live* pada domain utama resort.
 
@@ -230,7 +231,7 @@ Untuk menjamin kenyamanan dan transparansi pengerjaan proyek, pembayaran dilakuk
 
 ### D. Garansi & Dukungan Layanan Purna Jual (Support & Guarantee)
 
-- 🛡️ **Garansi Bebas Bug (6 Bulan):** Garansi penuh perbaikan jika terjadi kesalahan teknis atau bug sistem pasca launching.
+- 🛡️ **Garansi Bebas Bug (2 - 6 Bulan):** Garansi penuh perbaikan jika terjadi kesalahan teknis atau bug visual/sistem pasca launching.
 - 🎓 **Pelatihan Staf Hotel (Training Session):** Pembekalan langsung bagi tim *Frontdesk*, *General Manager*, dan *Finance* dalam mengoperasikan panel admin.
 - 💾 **Automated Database Backup:** Konfigurasi pembackupan database otomatis harian untuk mencegah kehilangan data reservasi.
 
