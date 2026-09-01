@@ -17,10 +17,10 @@ class HomeController extends Controller
     public function index()
     {
         $settings = [
-            'site_name' => 'KADU (Karsa Edukasi Vokasi)',
-            'site_description' => 'Generator RPP Deep Learning, Literasi & Numerasi Terapan Vokasi SMK Terintegrasi Payment Gateway',
+            'site_name' => 'Vije Boutique Resort',
+            'site_description' => 'Quiet Luxury Boutique Resort in Bali with Exclusive Suites, Private Pool Villas, and Direct Booking Engine',
             'site_logo_url' => null,
-            'whatsapp_number' => '6281234567890',
+            'whatsapp_number' => '628814959247',
         ];
 
         return Inertia::render('Welcome', [
