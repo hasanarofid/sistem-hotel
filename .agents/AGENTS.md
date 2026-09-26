@@ -63,11 +63,14 @@
 
 ---
 
-## 5. Standar Kode & Prosedur Git
+## 5. Standar Kode & Prosedur Git / Deploy (Shared Hosting FTP)
 
 1. **Kualitas Kode:** Terapkan prinsip DRY (Don't Repeat Yourself) dan KISS (Keep It Simple, Stupid). Sertakan strict typing.
 2. **Tanpa Masking Error:** Dilarang menyembunyikan exception dengan `try-catch` kosong atau mengembalikan dummy fallback tanpa log.
-3. **Verifikasi Wajib:** Selalu jalankan `npm run build` dan pengujian fungsi/API sebelum menganggap tugas selesai.
+3. **Workflow Deploy Shared Hosting:**
+   - Jalankan build lokal: `npm run build`.
+   - Upload folder `public/build` secara manual via FTP/SFTP ke shared hosting.
+   - Folder `public/build` wajib masuk `.gitignore` dan **tidak boleh** dipush ke Git repository.
 4. **Git Commit Standard:**
    ```bash
    git add .

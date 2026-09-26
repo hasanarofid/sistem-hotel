@@ -80,12 +80,15 @@
 
 ---
 
-## 6. Prosedur Git & Deploy
+## 6. Prosedur Git & Deploy (Shared Hosting via FTP)
 
-1. Build frontend assets: `npm run build`
-2. Push commit:
-   ```bash
-   git add .
-   git commit -m "feat/redesign: update luxury boutique resort rules & architecture from PRD"
-   git push origin master
-   ```
+- **Workflow Deploy Shared Hosting:**
+  1. Build frontend assets secara lokal: `npm run build`
+  2. Upload folder hasil build (`public/build`) secara manual via **FTP / SFTP** ke direktori server hosting (`/public_html/hotel.hasanarofid.site/public/build`).
+  3. **Folder `public/build` diabaikan oleh Git (`.gitignore`)** dan **DILARANG** dipush ke GitHub repository.
+- **Git Commit Standard:**
+  ```bash
+  git add .
+  git commit -m "feat/redesign: update luxury boutique resort rules & architecture from PRD"
+  git push origin master
+  ```
